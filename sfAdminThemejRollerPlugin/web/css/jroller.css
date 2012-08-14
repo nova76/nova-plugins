@@ -175,3 +175,11 @@ html { overflow: -moz-scrollbars-vertical !important; }
 .sf_admin_list .ui-widget-header{
   border:none;
 }
+
+span.fix{
+  clear:both !important;
+  display:block;
+  float:none !important;
+  height:1px;
+  overflow:hidden;
+}  
