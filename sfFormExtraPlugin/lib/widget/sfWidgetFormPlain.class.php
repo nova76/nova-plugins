@@ -47,8 +47,13 @@ class sfWidgetFormPlain extends sfWidgetForm
     $this->addOption('query', null);
     $this->addOption('multiple', false);
     $this->addOption('table_method', null);
-
+    
+    // csak Doctrine_Query table_method eseten. 
+    // Nem keri le a teljes tablat, csak a valueval egyezot
+    $this->addOption('cached_value', true); 
+    
     $this->addOption('showed_value', false);
+
     $this->addOption('has_hidden', false);
 
     //parent::configure($options, $attributes);    
@@ -73,6 +78,13 @@ class sfWidgetFormPlain extends sfWidgetForm
    */
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
+    $this->cached_value = false;
+    if ($this->getOption('cached_value') === true)
+    {
+      $this->cached_value = $value;  
+    }
+    
+    
     if (false!==$this->getOption('model'))
     {
       $choices = $this->getChoices();
@@ -116,6 +128,17 @@ class sfWidgetFormPlain extends sfWidgetForm
 
       if ($results instanceof Doctrine_Query)
       {
+        if ($this->cached_value !== false)
+        {
+          $table = Doctrine_Core::getTable($this->getOption('model'));
+          foreach ($table->getColumns() as $name => $definition) 
+          {
+            if (isset($definition['primary']) && $definition['primary']) {
+                $primary[] = $name;
+            }            
+          }
+          $results->addWhere($results->getRootAlias().'.'.$primary[0].' = ?', $this->cached_value);
+        }
         $objects = $results->execute();
       }
       else if ($results instanceof Doctrine_Collection)
