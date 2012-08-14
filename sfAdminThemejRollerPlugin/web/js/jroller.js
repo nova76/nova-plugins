@@ -44,6 +44,7 @@ jQuery().ready(function(){
 			.click(function(e) {
 			  e.preventDefault();
 				$('.sf_admin_filter').dialog('isOpen') ? $('.sf_admin_filter').dialog('close') : $('.sf_admin_filter').dialog('open');
+				$('html, body').animate({scrollTop: $('.sf_admin_filter').offset().top-40}, 'slow');
 			});
 
 		// modal window for filters
