@@ -1,4 +1,3 @@
-
 <?php 
 /**
 * sfExtraWidgetFormInputAutocomplete render an ajax autocompleter
