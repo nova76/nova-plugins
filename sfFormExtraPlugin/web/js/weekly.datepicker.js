@@ -17,9 +17,10 @@
 
   Date.prototype.fromString = function(myString) {
     var parts = myString.split(/[- :]/);
-    this.setFullYear(parts[0]);  
-    this.setMonth(parts[1] - 1);  
-    this.setDate(parts[2]);  
+    this.setFullYear(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));  
+    // this.setFullYear(parts[0]);  
+    // this.setMonth(parts[1] - 1);  
+    // this.setDate(parts[2]);  
   } 
   
   $.fn.weeklyDatepicker = function( options ) {  
