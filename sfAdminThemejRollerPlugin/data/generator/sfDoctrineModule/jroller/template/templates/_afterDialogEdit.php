@@ -1,0 +1,1 @@
+jQuery('#sf_admin_list_<?php echo $this->getModuleName() ?>').load('[?php echo url_for('<?php echo $this->getModuleName()?>/refreshList'); ?]');
