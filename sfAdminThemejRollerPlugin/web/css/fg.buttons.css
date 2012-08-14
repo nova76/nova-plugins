@@ -11,6 +11,7 @@ button.fg-button,
 button.ui-button { width: auto; overflow: visible; }
 
 .fg-button-icon-left { padding-left: 2.1em; }
+.fg-button-icon-left2 { padding-left: 0.6em; }
 .fg-button-icon-right { padding-right: 2.1em; }
 .fg-button-icon-left .ui-icon { right: auto; left: .2em; margin-left: 0; }
 button.fg-button-icon-left .ui-icon { /*left: -20px;*/ }
@@ -26,6 +27,3 @@ button.fg-button-icon-left .ui-icon { /*left: -20px;*/ }
 .fg-toolbar { padding: .5em; margin: 0;  }
 .fg-toolbar .fg-buttonset { margin-right:1.5em; padding-left: 1px; }
 .fg-toolbar .fg-button { font-size: 1em;  }
-.sf_admin_actions_form li{
-  margin-left:3px;
-}
