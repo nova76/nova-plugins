@@ -53,6 +53,9 @@ class sfWidgetFormPlain extends sfWidgetForm
     $this->addOption('cached_value', true); 
     
     $this->addOption('showed_value', false);
+    
+    // amig nincs kivalasztva semmi, ez jelenik meg
+    $this->addOption('empty', 'Not granted');
 
     $this->addOption('has_hidden', false);
 
@@ -83,23 +86,24 @@ class sfWidgetFormPlain extends sfWidgetForm
     {
       $this->cached_value = $value;  
     }
-    
+
+    $attributesDiv = array_merge($attributes, array('id'=>$this->generateId($name).'_div'));
     
     if (false!==$this->getOption('model'))
     {
       $choices = $this->getChoices();
       $hiddenInput = new sfWidgetFormInputHidden();
-      return $this->renderContentTag('div', $choices[$value], $attributes).$hiddenInput->render($name, $value, $attributes, $errors);
+      return $this->renderContentTag('div', isset($choices[$value])?$choices[$value]:$this->getOption('empty'), $attributesDiv).$hiddenInput->render($name, $value, $attributes, $errors);
     }
     elseif (false!==$this->getOption('showed_value'))
     {
       $hiddenInput = new sfWidgetFormInputHidden();
-      return $this->renderContentTag('div', $this->getOption('showed_value'), $attributes).$hiddenInput->render($name, $value, $attributes, $errors);
+      return $this->renderContentTag('div', $this->getOption('showed_value'), $attributesDiv).$hiddenInput->render($name, $value, $attributes, $errors);
     }
     elseif (false!==$this->getOption('has_hidden'))
     {
       $hiddenInput = new sfWidgetFormInputHidden();
-      return $this->renderContentTag('div', $value, $attributes).$hiddenInput->render($name, $value, $attributes, $errors);
+      return $this->renderContentTag('div', $value, $attributesDiv).$hiddenInput->render($name, $value, $attributes, $errors);
     }
         
     return $this->renderContentTag('div', $value, $attributes);  
@@ -119,6 +123,18 @@ class sfWidgetFormPlain extends sfWidgetForm
       {
         $query->addOrderBy($order[0] . ' ' . $order[1]);
       }
+      if ($this->cached_value !== false)
+      {
+        $table = Doctrine_Core::getTable($this->getOption('model'));
+        foreach ($table->getColumns() as $name => $definition) 
+        {
+          if (isset($definition['primary']) && $definition['primary']) {
+              $primary[] = $name;
+          }            
+        }
+        $query->addWhere($query->getRootAlias().'.'.$primary[0].' = ?', $this->cached_value);        
+      }
+      
       $objects = $query->execute();
     }
     else
@@ -159,6 +175,9 @@ class sfWidgetFormPlain extends sfWidgetForm
     $method = $this->getOption('method');
     $keyMethod = $this->getOption('key_method');
 
+    
+    $choices = array();
+    
     foreach ($objects as $object)
     {
       $choices[$object->$keyMethod()] = $object->$method();
