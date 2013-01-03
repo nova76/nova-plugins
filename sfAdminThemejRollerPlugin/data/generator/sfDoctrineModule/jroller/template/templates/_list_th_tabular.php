@@ -6,7 +6,7 @@
   [?php if ('<?php echo $name ?>' == $sort[0]): ?]
     [?php /*echo link_to(__('<?php echo $field->getConfig('label', '', true) ?>', array(), '<?php echo $this->getI18nCatalogue() ?>'), '@<?php echo $this->getUrlForAction('list') ?>?sort=<?php echo $name ?>&sort_type='.($sort[1] == 'asc' ? 'desc' : 'asc'), array('class' => $sort[1]))*/ ?]
 
-    <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?sort=<?php echo $name ?>&sort_type='.($sort[1] == 'asc' ? 'desc' : 'asc')) ?]">
+    <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?sort=<?php echo $name ?>&sort_type='.($sort[1] == 'asc' ? 'desc' : 'asc')) ?][?php echo has_slot('sf_admin.extend_url') ? '&'.get_slot('sf_admin.extend_url') : '' ?]">
       <span class="ui-icon [?php echo ($sort[1] == 'asc' ? 'ui-icon-circle-triangle-s' : 'ui-icon-circle-triangle-n') ?]"></span>
       [?php echo __('<?php echo $field->getConfig('label', '', true) ?>', array(), '<?php echo $this->getI18nCatalogue() ?>') ?]
     </a>
@@ -15,11 +15,10 @@
   [?php else: ?]
     [?php /*echo link_to(__('<?php echo $field->getConfig('label', '', true) ?>', array(), '<?php echo $this->getI18nCatalogue() ?>'), '@<?php echo $this->getUrlForAction('list') ?>?sort=<?php echo $name ?>&sort_type=asc')*/ ?]
 
-    <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?sort=<?php echo $name ?>&sort_type=asc') ?]">
+    <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?sort=<?php echo $name ?>&sort_type=asc') ?][?php echo has_slot('sf_admin.extend_url') ? '&'.get_slot('sf_admin.extend_url') : '' ?]">
       <span class="ui-icon ui-icon-triangle-2-n-s"></span>
       [?php echo __('<?php echo $field->getConfig('label', '', true) ?>', array(), '<?php echo $this->getI18nCatalogue() ?>') ?]
     </a>
-
   [?php endif; ?]
 <?php else: ?>
   [?php echo __('<?php echo $field->getConfig('label', '', true) ?>', array(), '<?php echo $this->getI18nCatalogue() ?>') ?]

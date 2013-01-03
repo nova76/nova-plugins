@@ -14,8 +14,9 @@
         <tr>
           <td colspan="2">
             <div style="text-align:right">
+              [?php include_partial('<?php echo $this->getModuleName() ?>/include_form_extend_variables', array('form' => $form, 'configuration' => $configuration)) ?]
               [?php echo $form->renderHiddenFields() ?]
-              [?php echo link_to(__('Reset'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post', 'class' =>  'fg-button ui-state-default ui-corner-all', 'id' => 'sf_admin_filter_reset')) ?]
+              [?php echo link_to(__('Reset'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => (has_slot('sf_admin.extend_url') ? get_slot('sf_admin.extend_url').'&' : '').'_reset', 'method' => 'post', 'class' =>  'fg-button ui-state-default ui-corner-all', 'id' => 'sf_admin_filter_reset')) ?]
               <input type="submit" value="[?php echo __('Filter', array(), 'sf_admin') ?]" class="fg-button ui-state-default ui-corner-all" id="sf_admin_filter_submit" />
             </div>
           </td>

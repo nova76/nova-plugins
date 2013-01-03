@@ -3,6 +3,7 @@ $first = ($pager->getPage() * $pager->getMaxPerPage() - $pager->getMaxPerPage() 
 $last = $first + $pager->getMaxPerPage() - 1;
 $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availableLimitNumbers : array('10'=>'10', '20'=>'20', '50'=>'50', '100'=>'100', '200'=>'200');
 ?]
+[?php $extend_url = has_slot('sf_admin.extend_url') ? get_slot('sf_admin.extend_url').'&' : '' ?]
 
 <table id="sf_admin_pager">
   <tbody>
@@ -14,9 +15,9 @@ $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availabl
         ?] 
         <script type="text/javascript">
           document.getElementById('paginator_hitperpage').onchange = function (){
-            document.location.href = '[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]+?limit='+this.value;
+            document.location.href = '[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]+?[?php echo $extend_url;?]limit='+this.value;
           }
-        </script>     
+        </script>      
       </td>
       <td class="center">
         <table align="center" class="sf_admin_pagination">
@@ -24,13 +25,13 @@ $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availabl
             <tr>
               [?php if ($pager->haveToPaginate()): ?]
               <td class="button">
-                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?page=1') ?]"[?php if ($pager->getPage() == 1) echo ' class="ui-state-disabled"' ?]>
+                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?'.$extend_url.'page=1') ?]"[?php if ($pager->getPage() == 1) echo ' class="ui-state-disabled"' ?]>
                   <?php echo UIHelper::addIconByConf('first') ?>
                 </a>
               </td>
 
               <td class="button">
-                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?page='.$pager->getPreviousPage()) ?]"[?php if ($pager->getPage() == 1) echo ' class="ui-state-disabled"' ?]>
+                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?'.$extend_url.'page='.$pager->getPreviousPage()) ?]"[?php if ($pager->getPage() == 1) echo ' class="ui-state-disabled"' ?]>
                   <?php echo UIHelper::addIconByConf('previous') ?>
                 </a>
               </td>
@@ -39,12 +40,12 @@ $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availabl
               [?php $number = $pager->getPage()-$i; ?]  
               [?php if ($number > 0): ?]  
               <td class="numbers">
-                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?page='.$number) ?]">
+                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?'.$extend_url.'page='.$number) ?]">
                   [?php echo $number ?]  
                 </a>
               </td>
               [?php endif; ?]
-              [?php endfor; ?]              
+              [?php endfor; ?]
               
               <td align="center">
                 [?php echo __('Page') ?]
@@ -56,8 +57,8 @@ $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availabl
                     var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
                     if ((evt.keyCode == 13) && (node.type=="text"))  {
                        evt.stopPropagation();
-                       document.location.href = '[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]+?page='+this.value;
-                       return false;   
+                       document.location.href = '[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]+?[?php echo $extend_url;?]page='+this.value;
+                       return false;                       
                     } 
                   }
                 </script>                   
@@ -67,21 +68,21 @@ $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availabl
               [?php $number = $pager->getPage()+$i; ?]  
               [?php if ($number <= $pager->getLastPage()): ?]              	
             	<td class="numbers">
-                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?page='.$number) ?]">
+                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?'.$extend_url.'page='.$number) ?]">
                   [?php echo $number ?]
                 </a>
               </td>
             	[?php endif; ?]
-            	[?php endfor; ?]            	
-            	
-              <td class="button">
-                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?page='.$pager->getNextPage()) ?]"[?php if ($pager->getPage() == $pager->getLastPage()) echo ' class="ui-state-disabled"' ?]>
+            	[?php endfor; ?]
+              
+            	<td class="button">
+                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?'.$extend_url.'page='.$pager->getNextPage()) ?]"[?php if ($pager->getPage() == $pager->getLastPage()) echo ' class="ui-state-disabled"' ?]>
                   <?php echo UIHelper::addIconByConf('next') ?>
                 </a>
               </td>
 
               <td class="button">
-                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?page='.$pager->getLastPage()) ?]"[?php if ($pager->getPage() == $pager->getLastPage()) echo ' class="ui-state-disabled"' ?]>
+                <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>?'.$extend_url.'page='.$pager->getLastPage()) ?]"[?php if ($pager->getPage() == $pager->getLastPage()) echo ' class="ui-state-disabled"' ?]>
                   <?php echo UIHelper::addIconByConf('last') ?>
                 </a>
               </td>

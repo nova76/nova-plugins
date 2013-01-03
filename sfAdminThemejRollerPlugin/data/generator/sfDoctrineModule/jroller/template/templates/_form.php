@@ -1,9 +1,11 @@
 [?php include_stylesheets_for_form($form) ?]
 [?php include_javascripts_for_form($form) ?]
 
-<div class="sf_admin_form">
+<div class="sf_admin_form [?php echo sfInflector::underscore($configuration->getFormClass()) ?]">
   [?php echo form_tag_for($form, '@<?php echo $this->params['route_prefix'] ?>') ?]
 
+    [?php include_partial('<?php echo $this->getModuleName() ?>/include_form_extend_variables', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?]
+  
     [?php if ($actions === true):  ?]
     <div class="sf_admin_actions_block ui-widget">
       [?php include_partial('<?php echo $this->getModuleName() ?>/form_actions', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?]

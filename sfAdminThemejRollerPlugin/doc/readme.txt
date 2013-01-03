@@ -41,7 +41,7 @@ sfAdminThemeRoller változtatások eddig:
 5.,  _show_footer.php 
   kellhet, ha valamit a show alá szeretnénk tenni, akár egy javascriptet.
 
-6., rendezés többféle rednezési mód:
+6., rendezés többféle rendezési mód:
 
   A legegyszerűbb:
     fieldname:   { is_sortable: true, function: rendezesfuggveny}
@@ -64,3 +64,30 @@ generator:
   beállitás esetén a  jRollerDoctrineGenerator osztalyt használja 
   az sfDoctrineGeenrator(dfModelGenerator) osztály helyett
   
+8.
+sf_admin.title néven létrehozott slot felülírja a címet, akár a formoknál, akár a listánál
+
+9., 
+sf_admin.extend_url végigvezetve a templatek linkjein
+// pl: 
+slot('sf_admin.extend_url')
+echo 'company='.sfContext::getInstance()->getRequest()->getParameter('company') 
+end_slot();
+// így belekerül a linkekbe a company paraméter is.
+vagy actionben:
+$this->getResponse()->setSlot('admin.extend_url', 'company='.$this->context->getRequest()->getParameter('company'));
+
+10., Nyissuk meg automatikusan a szürőt:
+    _list_footer.php - ba tegyük be egy jQuery blokba:  
+    jQuery('#sf_admin_filter_button').trigger('click')
+
+11, hogyan oldjuk meg a hogy a lista menuje szet legyen szedve:
+    _list_footer.php - ba tegyük be egy jQuery blokba:
+    jQuery('.sf_admin_actions_block').html($('#sf_admin_actions_menu_list').html()).addClass('sf_admin_td_actions fg-buttonset fg-buttonset-single').attr('style', 'width: 100%');
+    /* a menüpontok jobbra */
+    jQuery('.sf_admin_actions_block li').attr('style', 'float:right; margin-left:5px');
+    /* az első menüpont (_new) balra */
+    jQuery('.sf_admin_actions_block li:first').attr('style', 'float:left');
+    /* ha szinezni akarnánk */
+    jQuery('.sf_admin_action_new a').css("background", "yellow");
+      

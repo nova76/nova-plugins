@@ -32,7 +32,8 @@ class jRollerDoctrineGenerator extends sfDoctrineGenerator
 
   /**
    * Returns HTML code for a field.
-   *
+   * !!!IMPORTANT!!! generator.yml -> generator: / class: sfDoctrineGenerator => jRollerDoctrineGenerator
+   * 
    * @param sfModelGeneratorConfigurationField $field The field
    *
    * @return string HTML code
@@ -51,7 +52,7 @@ class jRollerDoctrineGenerator extends sfDoctrineGenerator
     }
     else if ($field->isPartial())
     {
-      return sprintf("get_partial('%s', array('type' => 'list', '%s' => \$%s))", $field->getName(), $this->getSingularName(), $this->getSingularName());
+      return sprintf("get_partial('%s', array('configuration'=> \$configuration,  'type' => 'list', '%s' => \$%s))", $field->getName(), $this->getSingularName(), $this->getSingularName());
     }
     else if ('Date' == $field->getType())
     {
@@ -75,6 +76,11 @@ class jRollerDoctrineGenerator extends sfDoctrineGenerator
     $action = isset($params['action']) ? $params['action'] : 'List'.sfInflector::camelize($actionName);
 
     $url_params = $pk_link ? '?'.$this->getPrimaryKeyUrlParams() : '\'';
+
+    if (isset($params['extend_url']))
+    {
+      $url_params .= '.(has_slot(\'sf_admin.extend_url\') ? \''.$params['extend_url'].'\'.get_slot(\'sf_admin.extend_url\') : \'\')';
+    }
 
     return '[?php echo link_to(__(\''.$params['label'].'\', array(), \''.$this->getI18nCatalogue().'\'), \''
     .(isset($params['module']) ? $params['module'] : $this->getModuleName()).

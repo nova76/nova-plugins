@@ -31,11 +31,13 @@
 		    
 		    [?php if ($field->isPartial()): ?]
 		    <div class="sf_admin_form_row">
+		      [?php if ($field->getConfig('label')!==false): ?]
 		      <label>[?php echo $field->getConfig('label')? $field->getConfig('label'): __(sfInflector::humanize($field->getName())) ?]:</label>
-		      [?php include_partial('<?php echo $this->getModuleName() ?>/'.$name, array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?]
+		      [?php endif; ?]
+		      [?php include_partial('<?php echo $this->getModuleName() ?>/'.$name, array('field' => $field, '<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'configuration' => $configuration, 'form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?]
 		    </div>
 		    [?php elseif ($field->isComponent()): ?]
-		      [?php include_component('<?php echo $this->getModuleName() ?>', $name, array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?]
+		      [?php include_component('<?php echo $this->getModuleName() ?>', $name, array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'configuration' => $configuration, 'form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?]
 	 	    [?php elseif ($columnDef && $columnDef['type'] == 'boolean'): ?]
   		    <div class="sf_admin_form_row">
   		    <label>[?php echo $field->getConfig('label')? $field->getConfig('label'): __(sfInflector::humanize($field->getName())) ?]:</label>  

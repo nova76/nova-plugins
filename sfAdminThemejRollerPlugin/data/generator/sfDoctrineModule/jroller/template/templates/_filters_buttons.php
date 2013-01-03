@@ -1,0 +1,3 @@
+<a href="#sf_admin_filter" id="sf_admin_filter_button" class="fg-button ui-state-default fg-button-icon-left ui-corner-left">[?php echo UIHelper::addIconByConf('filters') . __('Filters') ?]</a>
+[?php $isDisabledResetButton = ($hasFilters->getRawValue()) ? '' : ' ui-state-disabled' ?]
+[?php echo link_to(UIHelper::addIconByConf('reset') . __('Reset'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => (has_slot('sf_admin.extend_url') ? get_slot('sf_admin.extend_url').'&' : '').'_reset', 'method' => 'post', 'class' => 'fg-button ui-state-default fg-button-icon-left ui-corner-right'.$isDisabledResetButton)) ?]</span>

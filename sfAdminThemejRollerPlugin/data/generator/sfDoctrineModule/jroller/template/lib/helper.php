@@ -137,10 +137,11 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
         $params['params']
       ).'</li>';
   }  
-  
+
   public function linkToShow($object, $params)
   {
     $params['ui-icon'] = $this->getIcon('show', $params);
+    $params = $this->getAdminExtendUrl($params);    
     return '<li class="sf_admin_action_show">'.link_to(UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin'), $this->getUrlForAction('show'), $object, $params['params']).'</li>';
   }
 
@@ -149,18 +150,21 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
     if (!key_exists('ui-icon', $params)) $params['ui-icon'] = '';
     $params['params'] = UIHelper::addClasses($params, '');
     $params['ui-icon'] = $this->getIcon('new', $params);
-    return '<li class="sf_admin_action_new">'.link_to(UIHelper::addIcon($params) . __($params['label'] , array(), 'sf_admin'), '@'.$this->getUrlForAction('new'), $params['params']).'</li>';
+	$params = $this->getAdminExtendUrl($params);    
+	return '<li class="sf_admin_action_new">'.link_to(UIHelper::addIcon($params) . __($params['label'] , array(), 'sf_admin'), '@'.$this->getUrlForAction('new'), $params['params']).'</li>';
   }
 
   public function linkToEdit($object, $params)
   {
     $params['ui-icon'] = $this->getIcon('edit', $params);
+	$params = $this->getAdminExtendUrl($params); 
     return '<li class="sf_admin_action_edit">'.link_to(UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin'), $this->getUrlForAction('edit'), $object, $params['params']).'</li>';
   }
 
   public function linkToDelete($object, $params)
   {
     $params['params'] = UIHelper::arrayToString(array('class' => UIHelper::getClasses($params['params']).' ui-priority-secondary'));
+    $params = $this->getAdminExtendUrl($params);    
 
     if ($object->isNew())
     {
@@ -174,18 +178,21 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
   public function linkToList($params)
   {
     $params['ui-icon'] = $this->getIcon('list', $params);
+	$params = $this->getAdminExtendUrl($params); 
     return '<li class="sf_admin_action_list">'.link_to(UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin'), '@'.$this->getUrlForAction('list'),$params['params']).'</li>';
   }
 
   public function linkToSave($object, $params)
   {
     $params['ui-icon'] = $this->getIcon('save', $params);
+	$params = $this->getAdminExtendUrl($params); 
     return '<li class="sf_admin_action_save"><button type="submit" class="fg-button ui-state-default fg-button-icon-left">'. UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin').'</button></li>';
   }
 
   public function linkToSaveAndAdd($object, $params)
   {
     $params['ui-icon'] = $this->getIcon('saveAndAdd', $params);
+	$params = $this->getAdminExtendUrl($params); 
 
     if (!$object->isNew())
     {
@@ -195,6 +202,20 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
     return '<li class="sf_admin_action_save_and_add"><button type="submit" name="_save_and_add" class="fg-button ui-state-default fg-button-icon-left">'. UIHelper::addIcon($params) . __($params['label'], array(), 'sf_admin').'</button></li>';
   }
 
+  public function getAdminExtendUrl($params)
+  {
+    if (strpos($params['params'], 'query_string')===false)
+    {
+      $params['params'] .=  'query_string='._encodeText(get_slot('sf_admin.extend_url')) ;
+    }
+    else
+    {
+      $params['params'] = str_replace('query_string=', 'query_string='._encodeText(get_slot('sf_admin.extend_url').'&'), $params['params']);
+    }
+  
+    return $params; 
+  }
+  
   public function getUrlForAction($action)
   {
     return 'list' == $action ? '<?php echo $this->params['route_prefix'] ?>' : '<?php echo $this->params['route_prefix'] ?>_'.$action;

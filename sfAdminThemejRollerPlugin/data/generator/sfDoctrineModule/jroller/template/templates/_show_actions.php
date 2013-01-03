@@ -7,6 +7,11 @@
       if (!key_exists('ui-icon', $params)) $params['ui-icon'] = '';
       $params['params'] = UIHelper::addClasses($params);
   ?>
+  
+  <?php if ( isset( $params['condition'] ) ): ?>
+      [?php if ( <?php echo ( isset( $params['condition']['invert'] ) && $params['condition']['invert'] ? '!' : '') . '$' . $this->getSingularName( ) . '->' . $params['condition']['function'] ?>( <?php echo ( isset( $params['condition']['params'] ) ? $params['condition']['params'] : '' ) ?> ) ): ?] 
+  <?php endif; ?>  
+  
   <?php if ('_list' == $name): ?>
     <?php echo $this->addCredentialCondition('[?php echo $helper->linkToList('.$this->asPhp($params).') ?]', $params) ?>
   
@@ -27,6 +32,11 @@
   [?php endif; ?]
     </li>
   <?php endif; ?>
+  
+  <?php if ( isset( $params['condition'] ) ): ?>
+    [?php endif; ?]
+  <?php endif; ?>      
+  
   <?php endforeach; ?>
     <li style="height:20px"></li>  
   </ul>

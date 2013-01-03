@@ -3,6 +3,7 @@
 <?php endif ?>  
 
 <div class="sf_admin_list ui-grid-table ui-widget ui-corner-all ui-helper-reset ui-helper-clearfix">
+
   <?php if ($this->configuration->getValue('list.layout') == 'nestedset'): ?>
   <div class="fg-toolbar ui-corner-top ui-widget-header">
       <?php if ($this->configuration->hasFilterForm()): ?>
@@ -60,15 +61,23 @@
 	   
 	   </script>
 	[?php endif?]
-    
   <?php else:?>  
-
 
   [?php if (!$pager->getNbResults()): ?]
 
   <table>
     <caption class="fg-toolbar ui-widget-header ui-corner-top">
-      <h1><span class="ui-icon ui-icon-triangle-1-s"></span> [?php echo <?php echo $this->getI18NString('list.title') ?> ?]</h1>
+      <?php if ($this->configuration->hasFilterForm()): ?>
+      <?php $configuration = $this->configuration  ?>
+      <?php $template = ($configuration->getFilterTemplate()); ?>
+      <?php $filterButtons = $template=='table-caption' ?>
+      <?php if ($filterButtons): ?>	
+      <div id="sf_admin_filters_buttons" class="fg-buttonset fg-buttonset-multi ui-state-default">
+        [?php include_partial('<?php echo $this->getModuleName() ?>/filters_buttons', compact('hasFilters')) ?]
+      </div>	  
+      <?php endif; ?>
+      <?php endif; ?>
+      <h1><span class="ui-icon ui-icon-triangle-1-s"></span> [?php echo has_slot('sf_admin.title') ? get_slot('sf_admin.title') : <?php echo $this->getI18NString('list.title') ?> ?]</h1>
     </caption>
     <tbody>
       <tr class="sf_admin_row ui-widget-content">
@@ -89,13 +98,11 @@
       <?php $filterButtons = $template=='table-caption' ?>
       <?php if ($filterButtons): ?>
       <div id="sf_admin_filters_buttons" class="fg-buttonset fg-buttonset-multi ui-state-default">
-        <a href="#sf_admin_filter" id="sf_admin_filter_button" class="fg-button ui-state-default fg-button-icon-left ui-corner-left">[?php echo UIHelper::addIconByConf('filters') . __('Filters') ?]</a>
-        [?php $isDisabledResetButton = ($hasFilters->getRawValue()) ? '' : ' ui-state-disabled' ?]
-        [?php echo link_to(UIHelper::addIconByConf('reset') . __('Reset'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post', 'class' => 'fg-button ui-state-default fg-button-icon-left ui-corner-right'.$isDisabledResetButton)) ?]</span>
+        [?php include_partial('<?php echo $this->getModuleName() ?>/filters_buttons', compact('hasFilters')) ?]
       </div>
       <?php endif; ?>
       <?php endif; ?>
-      <h1><span class="ui-icon ui-icon-triangle-1-s"></span> [?php echo <?php echo $this->getI18NString('list.title') ?> ?]</h1>
+      <h1><span class="ui-icon ui-icon-triangle-1-s"></span> [?php echo has_slot('sf_admin.title') ? get_slot('sf_admin.title') : <?php echo $this->getI18NString('list.title') ?> ?]</h1>
     </caption>
 
     <thead class="ui-widget-header">
@@ -122,8 +129,8 @@
       </tr>
     </tfoot>
 
-    [?php include_partial('<?php echo $this->getModuleName() ?>/list_body', array('pager' => $pager, 'sort' => $sort, 'helper' => $helper, 'hasFilters' => $hasFilters)) ?]
-    
+	[?php include_partial('<?php echo $this->getModuleName() ?>/list_body', array('configuration' => isset($configuration) ? $configuration : null, 'pager' => $pager, 'sort' => $sort, 'helper' => $helper, 'hasFilters' => $hasFilters)) ?]
+	
   </table>
     
   [?php endif; ?]
