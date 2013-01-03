@@ -44,6 +44,8 @@
       {
         $this->getUser()->setFlash('notice', $notice);
 
+        $this->redirectFromProcessForm($request, $form, $notice);
+		
         $this->redirect(array('sf_route' => '<?php echo $this->getUrlForAction('edit') ?>', 'sf_subject' => $<?php echo $this->getSingularName() ?>));
       }
     }
@@ -66,4 +68,9 @@
       $flash .= '</ul>';
       $this->getUser()->setFlash('error', 'Az elem mentése hiba miatt sikertelen volt.<br /><br />'.$flash, false);
     }
+  }
+  
+  protected function redirectFromProcessForm(sfWebRequest $request, sfForm $form, $notice)
+  {
+    
   }
