@@ -24,11 +24,11 @@
       <?php if ($this->configuration->getValue('list.layout') == 'nestedset'): ?>   
       if ($afterSave)
       {
-        $root = $this->makeRootIfNecessary();
-        $parent = CmsTable::getInstance()->findOneById($cms->getRootId());
+        $root = $this->makeRoot();
+        $parent = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->findOneById($<?php echo $this->getSingularName() ?>->getRootId());
         $root->refresh();
         $parent->refresh();
-        $cms->getNode()->insertAsFirstChildOf($parent);
+        $<?php echo $this->getSingularName() ?>->getNode()->insertAsFirstChildOf($parent);
       }        
       <?php endif ?>      
       
