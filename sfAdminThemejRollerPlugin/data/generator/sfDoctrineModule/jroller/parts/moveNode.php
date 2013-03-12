@@ -1,3 +1,9 @@
+
+  /**
+  * node mozgatasa
+  * jsont var visza
+  *
+  */
   public function executeMoveNode(sfWebRequest $request)
   {
     $parent = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->findOneById($request->getParameter('parent'));
@@ -21,6 +27,6 @@
           ->offset($position);
       $node->getNode()->moveAsPrevSiblingOf($q->fetchOne());
     }
-    
-    return sfView::NONE;
+
+    return $this->renderText('{}'); 
   }
