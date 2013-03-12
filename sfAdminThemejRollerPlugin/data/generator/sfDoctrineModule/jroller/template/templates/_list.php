@@ -6,22 +6,18 @@
 
   <?php if ($this->configuration->getValue('list.layout') == 'nestedset'): ?>
   <div class="fg-toolbar ui-corner-top ui-widget-header">
-      <?php if ($this->configuration->hasFilterForm()): ?>
+    <?php if ($this->configuration->hasFilterForm()): ?>
       <?php $configuration = $this->configuration  ?>
       <?php $template = ($configuration->getFilterTemplate()); ?>
       <?php $filterButtons = $template=='table-caption' ?>
       <?php if ($filterButtons): ?>
-      <div id="sf_admin_filters_buttons" class="fg-buttonset fg-buttonset-multi ui-state-default">
-        <a href="#sf_admin_filter" id="sf_admin_filter_button" class="fg-button ui-state-default fg-button-icon-left ui-corner-left">[?php echo UIHelper::addIconByConf('filters') . __('Filters') ?]</a>
-        [?php $isDisabledResetButton = ($hasFilters->getRawValue()) ? '' : ' ui-state-disabled' ?]
-        [?php echo link_to(UIHelper::addIconByConf('reset') . __('Reset'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post', 'class' => 'fg-button ui-state-default fg-button-icon-left ui-corner-right'.$isDisabledResetButton)) ?]</span>
-      </div>
+        <?php // TODO  jo lenne valami szures :-( ?>
       <?php endif; ?>
-      <?php endif; ?>    
-     <h1 class='ui-widget-header'> [?php echo <?php echo $this->getI18NString('list.title') ?> ?] </h1>
+    <?php endif; ?>    
+    <h1 class='ui-widget-header'> [?php echo <?php echo $this->getI18NString('list.title') ?> ?] </h1>
   </div>  
   
-	[?php // use_helper('jQuery'); ?]
+	[?php use_helper('jQuery'); ?]
 	[?php jq_add_plugin('jquery.cookie'); ?]
 	[?php jq_add_plugin('jquery.hotkeys'); ?]
 	[?php jq_add_plugin('jquery.form'); ?]
@@ -49,7 +45,7 @@
 	      jQuery("#tree").nestedset({
 	        'indexUrl'         : '[?php echo url_for('@<?php echo $this->params['route_prefix'] ?>'); ?]',
 	        'csrfValue'        : '[?php echo $helper->getCSRFValue(); ?]',
-	        'csrfFieldName'    :  '[?php echo $helper->getCSRFFieldName(); ?]',
+	        'csrfFieldName'    : '[?php echo $helper->getCSRFFieldName(); ?]',
 	        'idprefix'         : '[?php echo $idprefix; ?]',
 		      'dialogNewBoxId'   : '<?php echo $this->configuration->getValue('list.actions._new.jq_dialogbox') ?>',
 		      'dialogEditBoxId'  : '<?php echo $this->configuration->getValue('list.object_actions._edit.jq_dialogbox') ?>',
