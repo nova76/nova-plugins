@@ -93,7 +93,7 @@ function jq_add_plugin($options = array()) {
 		$options = array($options);
 	}
 	foreach ( $options as $o ) {
-    $file = sfConfig::get('sf_jquery_web_dir', '/sfJqueryReloadedPlugin') . "/js/plugins/$o";
+    $file = sfConfig::get('sf_jquery_web_dir', '/sfJqueryReloadedPlugin') . "/js/plugins/$o.js";
 		sfContext::getInstance ()->getResponse ()->addJavascript ($file);
 	}
 }
