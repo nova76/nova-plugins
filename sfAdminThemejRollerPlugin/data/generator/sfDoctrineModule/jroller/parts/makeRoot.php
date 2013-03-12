@@ -4,7 +4,7 @@
    *
    * @return <?php echo $this->getModelClass() ?>(root)
    */
-  protected function makeRootIfNecessary()
+  protected function makeRoot()
   {
     $treeObject = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->getTree();
     $root = $treeObject->fetchRoot();
