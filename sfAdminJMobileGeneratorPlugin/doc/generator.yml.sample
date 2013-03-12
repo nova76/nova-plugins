@@ -1,0 +1,50 @@
+generator:
+  class: jRollerDoctrineGenerator
+  param:
+    model_class:           company
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          company
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+          contact:              { label: Elsődleges kapcs.tartó neve, is_sortable: false, peer: Contact, sort: name}  
+          contact_phone:        { label: Elsődleges kapcs.tartó tel., is_sortable: false, peer: Contact, sort: phone}  
+          contact_email:        { label: Elsődleges kapcs.tartó tel., is_sortable: false, peer: Contact, sort: email}  
+          egyeb:                { label: Elsődleges kapcs.tartó tel., is_sortable: true, function: egyebsorter}  
+          name:                 { label: Cégnév }
+          client:               { label: Ügyfél }
+      list:   
+        title: Cégek  
+        display:          [_name, client, contact, contact_phone, contact_email]
+        batch_actions:   []
+        object_actions:
+          _edit:      { label: M, ui-icon: false }
+          blacklist:
+            label:          BL
+            action:         blacklist
+            condition:
+              function:     getBlacklist 
+              invert:       true           
+          _delete:    { label: T, confirm: Biztos vagy benne?, ui-icon: false }        
+      filter:  
+        template: top
+        extra_css_class: "sf_admin_edit ui-widget ui-widget-content ui-corner-all"
+        display: [search]
+      form:    
+        template: { name: accordion, open: [0]}
+        display:
+          "Céges adatok":            [name, address, letter_address, phone, fax, email, web]
+          "Kapcsolattartói adatok":  [_form_contacts] #contacts, addEmbedform
+          "Pénzügyi információk":    [accountant_name, accountant_address, accountant_phone, accountant_fax, cmt]      
+          "Bap kapcsolattartók":     [sf_guard_user_profile_list]          
+      edit:    
+        title: Cég szerkesztése
+      new:     
+        title: Új cég rögzítése
