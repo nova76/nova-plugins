@@ -47,7 +47,7 @@ $.fn.nestedset = function(options) {
     
        
 
-    jQuery(this).jstree({
+    $(this).jstree({
       "core" : {},        	
       "plugins" : ["html_data", "themes", "ui", "crrm", "cookies", "hotkeys", "contextmenu", "dnd"],
       "themes" : {
@@ -104,7 +104,7 @@ $.fn.nestedset.defaults = {
 $.fn.nestedset.showNode = function (node){
 	  var defaults = $.fn.nestedset.defaults;
 	  if (arguments.length > 0) { node = arguments[0]; node = node.parent('li'); }
-	  else node = jQuery("#"+defaults.treeId).jstree("get_selected");
+	  else node = $("#"+defaults.treeId).jstree("get_selected");
 	  if (node.length==0) return false;
 	  $('#'+$.fn.nestedset.defaults.dialogShowBoxId).load(
 	    $.fn.nestedset.defaults.indexUrl + '/' + node.attr('id').replace(defaults.idprefix, ''), 
@@ -115,7 +115,7 @@ $.fn.nestedset.showNode = function (node){
 $.fn.nestedset.editNode = function (node){
 	  var defaults = $.fn.nestedset.defaults;
 	  if (arguments.length > 0) { node = arguments[0]; node = node.parent('li'); }
-	  else node = jQuery("#"+defaults.treeId).jstree("get_selected");
+	  else node = $("#"+defaults.treeId).jstree("get_selected");
 	  if (node.length==0) return false;
 	  $('#'+$.fn.nestedset.defaults.dialogEditBoxId).load(
 	    $.fn.nestedset.defaults.indexUrl + '/' + node.attr('id').replace(defaults.idprefix, '') + '/edit', 
@@ -147,17 +147,17 @@ $.fn.nestedset.deleteNode = function (node){
 $.fn.nestedset.newNode = function (parentNode){
   var defaults = $.fn.nestedset.defaults;
   if (arguments.length > 0) { parentNode = arguments[0]; parentNode = parentNode.parent('li'); }	  
-  else parentNode = jQuery("#"+defaults.treeId).jstree("get_selected")
+  else parentNode = $("#"+defaults.treeId).jstree("get_selected")
   if (parentNode.length==0) return false;
   $('#'+$.fn.nestedset.defaults.dialogNewBoxId).load(
 	defaults.indexUrl + '/' + parentNode.attr('id').replace(defaults.idprefix, '') + '/new', 
-    function(){ jQuery('#'+defaults.dialogNewBoxId).dialog('open'); }
+    function(){ $('#'+defaults.dialogNewBoxId).dialog('open'); }
   )          
 }
 
 
 //end
-})(jQuery);
+})($);
 
 
 
