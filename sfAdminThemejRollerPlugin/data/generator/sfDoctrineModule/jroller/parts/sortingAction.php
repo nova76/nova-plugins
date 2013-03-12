@@ -3,7 +3,7 @@
   {
     $query->addOrderBy('root_id asc');
     $query->addOrderBy('lft asc');
-    $query->addWhere('deleted_at is null');
+    // $query->addWhere('deleted_at is null');
     $query->addWhere('level <> 0');
   } 
 <?php else: ?>
