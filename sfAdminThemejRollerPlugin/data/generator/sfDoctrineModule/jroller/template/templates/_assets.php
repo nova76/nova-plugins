@@ -4,7 +4,7 @@
 
 <?php if (sfConfig::get('app_sf_admin_theme_jroller_plugin_use_jquery')): // use jQuery ?>
   [?php use_javascript('<?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_web_dir', '/sfAdminThemejRollerPlugin').'/js/jquery.min.js' ?>', 'first') ?]
-  [?php use_javascript('<?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_web_dir', '/sfAdminThemejRollerPlugin').'/js/jquery-ui.custom.min.js' ?>', 'first') ?]
+  [?php use_javascript('<?php echo sfConfig::get('app_sf_admin_theme_jroller_plugin_web_dir', '/sfAdminThemejRollerPlugin').'/js/jquery-ui.min.js' ?>', 'first') ?]
 <?php endif; ?>
 
 <?php if (sfConfig::get('app_sf_admin_theme_jroller_plugin_theme_switcher')): // theme switcher ?>
