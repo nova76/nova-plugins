@@ -24,7 +24,7 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
           'url'    => url_for( array_merge(array('sf_route' => $this->getUrlForAction('show')), array('sf_subject' => $object))),
           'method' => 'GET',
           'before' => 'jQuery("#'.$params['jq_dialogbox'].'").html();',
-          'after'  => 'jQuery("#'.$params['jq_dialogbox'].'").dialog();' 
+          'after'  => 'jQuery("#'.$params['jq_dialogbox'].'").dialog(\'open\');' 
         ), 
         $params['params']
         ).'</li>';
@@ -64,7 +64,7 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
           'method' => 'GET',
           'before' => 'jQuery("#'.$params['jq_dialogbox'].'").html();',
           'after'  => '
-            jQuery("#'.$params['jq_dialogbox'].'").dialog();
+            jQuery("#'.$params['jq_dialogbox'].'").dialog(\'open\');
             jQuery("#'.$params['jq_dialogbox'].'").dialog( "option", "title", "'.<?php echo $this->getI18NString('edit.title') ?>.'");' 
         ), 
         $params['params']
