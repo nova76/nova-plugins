@@ -6,7 +6,14 @@
 
     $this->getRoute()->getObject()->delete();
 
-    $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
-
-    $this->redirect('@<?php echo $this->getUrlForAction('list') ?>');
+    if ($request->isXmlHttpRequest())
+    {
+      return $this->renderText('success');  
+    }
+    else
+    {
+      $this->getUser()->setFlash('notice', 'The item was deleted successfully.');
+      $this->redirect('@<?php echo $this->getUrlForAction('list') ?>');
+    }    
+    
   }

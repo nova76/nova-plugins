@@ -3,7 +3,7 @@
 	  tr : null, //// table row, which has been deleted.
 	  success : function (data, textStatus, XMLHttpRequest)
 	  {
-	    if (data == '"success"')
+	    if (data == 'success')
 	    {
 	    	<?php if (!$this->configuration->getValue('list.object_actions._delete.afterRemote')): ?>
 	    	  <?php echo $this->getModuleName() ?>RemoteDelete.refreshList();
