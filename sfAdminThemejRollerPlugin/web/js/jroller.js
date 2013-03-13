@@ -39,9 +39,9 @@ jQuery().ready(function(){
 		});
 		
 		// filter button to show the modal window of available filters
-		$('#sf_admin_filter_button')
-			.addClass('sf_button-toggleable')
-			.click(function(e) {
+		$(document)
+			.on('click', '#sf_admin_filter_button', function(e) {
+			  $('#sf_admin_filter_button').addClass('sf_button-toggleable') 
 			  e.preventDefault();
 				$('.sf_admin_filter').dialog('isOpen') ? $('.sf_admin_filter').dialog('close') : $('.sf_admin_filter').dialog('open');
 				$('html, body').animate({scrollTop: $('.sf_admin_filter').offset().top-40}, 'slow');
