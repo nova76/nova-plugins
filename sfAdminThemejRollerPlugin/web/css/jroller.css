@@ -183,3 +183,8 @@ span.fix{
   height:1px;
   overflow:hidden;
 }  
+
+/* jquery-ui bugfix */
+.ui-dialog .ui-dialog-titlebar-close span {
+    margin: -8px;
+}
