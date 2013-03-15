@@ -51,9 +51,21 @@
 
   public function getFormDisplay()
   {
-    return <?php echo $this->asPhp(isset($this->config['form']['display']) ? $this->config['form']['display'] : array()) ?>;
+<?php if (isset($this->config['form']['display'])): ?>
+    return <?php echo $this->asPhp($this->config['form']['display']) ?>;
+<?php elseif (isset($this->config['form']['hide'])): ?>
+    return <?php echo $this->asPhp(array_diff($this->getAllFieldNames(false), $this->config['form']['hide'])) ?>;
+<?php else: ?>
+    return <?php echo $this->asPhp(array()); ?>;
+<?php endif; ?>
 <?php unset($this->config['form']['display']) ?>
   }
+  
+  public function getFormHide()
+  {
+    return <?php echo $this->asPhp(isset($this->config['form']['hide']) ? $this->config['form']['hide'] : array()) ?>;
+<?php unset($this->config['form']['hide']) ?>
+  }  
 
   public function getEditDisplay()
   {
