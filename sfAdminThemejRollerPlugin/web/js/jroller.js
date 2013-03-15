@@ -95,10 +95,12 @@ jQuery().ready(function(){
 		});
 
     // batch actions
+    /*
     $('.sf_admin_batch_actions_choice select').selectmenu({
       style: 'dropdown',
       width: 200
     });
+    */
 	}
 
 	/*
