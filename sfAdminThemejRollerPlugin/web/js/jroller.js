@@ -33,7 +33,7 @@ jQuery().ready(function(){
 	if ($('.sf_admin_list').length)
 	{
 		// actions menu on list view
-		$('#sf_admin_actions_button').menu({ 
+		$('#sf_admin_actions_button').menu_sf_admin({ 
 			content: $('#sf_admin_actions_menu').html(),
 			showSpeed: 300
 		});
