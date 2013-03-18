@@ -6,27 +6,24 @@
   */
   public function executeMoveNode(sfWebRequest $request)
   {
-    $parent = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->findOneById($request->getParameter('parent'));
     $node   = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->findOneById($request->getParameter('id'));
-    $position = $request->getParameter('position');
-    if ($position == 1)
+    
+    if ($request->getParameter('prev') == 'false' && $request->getParameter('next') == 'false')
     {
-      $node->getNode()->moveAsFirstChildOf($parent);
-    }
-    elseif($position == $parent->getNode()->getNumberChildren())
+      $parent = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->findOneById($request->getParameter('parent'));
+      $node->getNode()->moveAsFirstChildOf($parent);  
+    }  
+    elseif ($request->getParameter('prev') == 'false')
     {
-      $node->getNode()->moveAsLastChildOf($parent);
+      $next = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->findOneById($request->getParameter('next'));
+      $node->getNode()->moveAsPrevSiblingOf($next);
+      
     }
     else
     {
-      $q = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->CreateQuery()
-          ->addWhere('lft > '.$parent->getLft())
-          ->addWhere('rgt < '.$parent->getRgt())
-          ->orderby('lft')
-          ->limit(2)
-          ->offset($position);
-      $node->getNode()->moveAsPrevSiblingOf($q->fetchOne());
+      $prev = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>')->findOneById($request->getParameter('prev'));
+      $node->getNode()->moveAsNextSiblingOf($prev);
     }
-
+    
     return $this->renderText('{}'); 
   }

@@ -14,11 +14,10 @@ $.fn.nestedset = function(options) {
     $.jstree._themes = "sfJqueryReloadedPlugin/js/plugins/themes/";
     
     $(this).bind("before.jstree", function (e, data) {
-      if(data.func === "delete_node") {  //open_node
+      if(data.func === "delete_node") { 
+        
         var res = $.fn.nestedset.deleteNode($(data.args[0]));
-      	$('#'+$.fn.nestedset.defaults.dialogShowBoxId).html(res.message);
-       	$('#'+$.fn.nestedset.defaults.dialogShowBoxId).dialog('open');
-       	if (res.success != 1)
+       	if (res.status != 200)
        	{
        	  e.stopImmediatePropagation();
        	  return false;
@@ -37,7 +36,8 @@ $.fn.nestedset = function(options) {
       	 data : { 
       	        'id'      : $(data.rslt.o).attr('id').replace(defaults.idprefix, ''),
                 'parent'  : (data.rslt.cr === -1 ? 1 : data.rslt.np.attr("id").replace(defaults.idprefix, '')),
-                'position': (data.rslt.cp == 0 ? 1 : data.rslt.cp)
+                'prev'    : ($(data.rslt.o).prev().length == 0 ? false : $(data.rslt.o).prev().attr('id').replace(defaults.idprefix, '')),
+                'next'    : ($(data.rslt.o).next().length == 0 ? false : $(data.rslt.o).next().attr('id').replace(defaults.idprefix, ''))
               },
          error: function (r, textStatus, XMLHttpRequest){
       	   $.jstree.rollback(data.rlbk);
@@ -130,14 +130,13 @@ $.fn.nestedset.deleteNode = function (node){
   var data = {'sf_method': 'delete'};
   data[defaults.csrfFieldName] = defaults.csrfValue;
   $.ajax({
-	type: 'POST',
-	async: false,
-	url: defaults.indexUrl + '/' + id,
-	data : data,
-    success: function (data, textStatus, XMLHttpRequest){
-	  res = data
-	},
-    dataType: 'json'
+  	type: 'POST',
+  	async: false,
+  	url: defaults.indexUrl + '/' + id,
+  	data : data,
+      success: function (data, textStatus, XMLHttpRequest){ res = data },
+      error:   function (data, textStatus, XMLHttpRequest){ res = data },      
+      dataType: 'json'
   });
   return res;		
 }

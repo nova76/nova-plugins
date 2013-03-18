@@ -4,7 +4,14 @@
 
     $this->dispatcher->notify(new sfEvent($this, 'admin.delete_object', array('object' => $this->getRoute()->getObject())));
 
-    $this->getRoute()->getObject()->delete();
+    if ($this->configuration->getValue('list.layout') == 'nestedset')
+    {
+      $this->getRoute()->getObject()->getNode()->delete();
+    }
+    else
+    {
+      $this->getRoute()->getObject()->delete();  
+    }
 
     if ($request->isXmlHttpRequest())
     {
