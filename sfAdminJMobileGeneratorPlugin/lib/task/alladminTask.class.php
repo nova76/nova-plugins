@@ -52,15 +52,15 @@ EOF;
     
     foreach ($modules as $module)
     {
-      $question = $this->ask($module.' táblához modult generáljunk?');
+      $question = $this->ask('geenrate modul for '.$module.' table?');
       if ($question == 'e')
       {
         break;
       }
       if ($question == 'y')
       {
-        $this->runTask('doctrine:generate-admin', array('application' => 'frontend', 'module' => $module ), array('theme'=>'jmobile'));
-        $this->runTask('doctrine:generate-admin', array('application' => 'frontend', 'module' => $module ));
+        $this->runTask('doctrine:generate-admin', array('application' => $options['application'], 'module' => $module ), array('theme'=>'jmobile'));
+        $this->runTask('doctrine:generate-admin', array('application' => $options['application'], 'module' => $module ));
         $this->logSection ('modules', $module. 'generálása megtörtént'); //$module
       }
     }

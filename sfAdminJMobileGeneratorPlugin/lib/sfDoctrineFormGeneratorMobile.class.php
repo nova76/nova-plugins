@@ -195,7 +195,11 @@ class sfDoctrineFormGeneratorMobile extends sfDoctrineFormGenerator
   {
     $options = array();
     
-    if ('integer' == $column->getDoctrineType() && is_subclass_of($this->getWidgetClassForColumn($column), 'sfWidgetFormChoiceBase'))
+    if ($column->isForeignKey())
+    {
+      
+    }
+    elseif ('integer' == $column->getDoctrineType() && is_subclass_of($this->getWidgetClassForColumn($column), 'sfWidgetFormChoiceBase'))
     {
       $options[] = '\'data-role\' => \'slider\'';
     }

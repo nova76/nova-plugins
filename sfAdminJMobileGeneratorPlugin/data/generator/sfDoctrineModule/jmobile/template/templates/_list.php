@@ -30,12 +30,12 @@
         
         [?php $display = array(); ?]
         <?php foreach ($this->configuration->getValue('list.display') as $name => $field): ?>
-          [?php $display['<?php echo $name ?>'] = $<?php echo $this->getModuleName()?>->get('<?php echo $name ?>'); ?]
+          [?php $display['<?php echo $name ?>'] = $<?php echo $this->getSingularName() ?>->get('<?php echo $name ?>'); ?]
         <?php endforeach; ?>        
       
         <?php $route = $this->configuration->getValue('list.route') ?  $this->configuration->getValue('list.route') : '$helper->getUrlForAction(\'edit\')'; ?>
         
-        <?php echo $this->addCredentialCondition('[?php echo link_to(implode(" - ", $display), '.$route.', $'.$this->getModuleName().', array()); ?]'); ?>
+        <?php echo $this->addCredentialCondition('[?php echo link_to(implode(" - ", $display), '.$route.', $'.$this->getSingularName().', array()); ?]'); ?>
       </li>
     [?php endforeach; ?]
     </ul>
