@@ -91,3 +91,13 @@ $this->getResponse()->setSlot('admin.extend_url', 'company='.$this->context->get
     /* ha szinezni akarnánk */
     jQuery('.sf_admin_action_new a').css("background", "yellow");
       
+12., hogyan rejtsük el a lenyiló menüt:
+$(function () {
+    // ez elrejti a muveletek lenyilo menut, ha nincs benne semmi
+    if($('#sf_admin_actions_menu_list').length != 0 && $('#sf_admin_actions_menu_list').children().length == 0) $('.sf_admin_actions_block').hide();
+    
+    // ez egy gombot csinal a muveletek lenyilo menubol, ha csak 1 eleme van a lenyilo menunek
+    if($('#sf_admin_actions_menu_list').length != 0 && $('#sf_admin_actions_menu_list').children().length == 1) {
+      $('.sf_admin_actions_block').html($('#sf_admin_actions_menu_list').html()).addClass('sf_admin_td_actions fg-buttonset fg-buttonset-single').attr('style', 'width: 500px;');
+    }
+});    
