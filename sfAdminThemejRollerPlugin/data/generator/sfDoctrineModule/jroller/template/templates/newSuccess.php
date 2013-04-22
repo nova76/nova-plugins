@@ -2,21 +2,20 @@
 
 <div id="sf_admin_container" class="sf_admin_edit ui-widget ui-widget-content ui-corner-all">
 
-<?php if ($this->configuration->getValue('list.actions._new.jq_dialogbox')): ?>
-
     [?php $actions = false ?]
     
-<?php else: ?>
+    [?php if(!$sf_request->isXmlHttpRequest()): ?]
 
-    [?php $actions = true ?]
-    
     [?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
     
     <div class="fg-toolbar ui-widget-header ui-corner-all">
       <h1>[?php echo has_slot('sf_admin.title') ? get_slot('sf_admin.title') : <?php echo $this->getI18NString('new.title') ?> ?]</h1>
     </div>
-  
-<?php endif?> 
+    
+    [?php $actions = true ?]
+    
+    [?php endif ?]     
+
 
     [?php include_partial('<?php echo $this->getModuleName() ?>/flashes', array('form' => $form)) ?]
 
