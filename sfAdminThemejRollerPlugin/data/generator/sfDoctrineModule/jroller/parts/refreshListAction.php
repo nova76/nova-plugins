@@ -14,6 +14,7 @@
 
     $this->pager = $this->getPager();
     $this->sort = $this->getSort();
+    $this->limit = $this->getLimit();  
 
     // has filters? (usefull for activate reset button)
     $this->hasFilters = $this->getUser()->getAttribute('<?php echo $this->getModuleName() ?>.filters', $this->configuration->getFilterDefaults(), 'admin_module');

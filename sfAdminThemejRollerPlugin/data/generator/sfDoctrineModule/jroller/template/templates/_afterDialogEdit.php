@@ -1,1 +1,2 @@
-jQuery('#sf_admin_list_<?php echo $this->getModuleName() ?>').load('[?php echo url_for('<?php echo $this->getModuleName()?>/refreshList'); ?]');
+[?php $query_string = has_slot('sf_admin.extend_url') ? '?'.get_slot('sf_admin.extend_url') : '' ?]
+jQuery('#sf_admin_list_<?php echo $this->getModuleName() ?>').load('[?php echo url_for('<?php echo $this->getModuleName()?>/refreshList').$query_string; ?]');

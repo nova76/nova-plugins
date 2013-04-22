@@ -35,12 +35,17 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
     if (!key_exists('ui-icon', $params)) $params['ui-icon'] = '';
     $params['params'] = UIHelper::addClasses($params, '');
     $params['ui-icon'] = $this->getIcon('new', $params);
+    
+    $params = $this->getAdminExtendUrl($params);    
+	  $html_options = _parse_attributes($params['params']);
+    $extra = $html_options['query_string'] ? '?'.$html_options['query_string'] : '';
+	  
     return '<li class="sf_admin_action_new">'.
       jq_link_to_remote(
         UIHelper::addIcon($params) . __($params['label'], array(),  '<?php $this->getI18nCatalogue()?>'), 
         array(
           'update' => $params['jq_dialogbox'], 
-          'url'    => url_for( array_merge(array('sf_route' => $this->getUrlForAction('new')))),
+          'url'    => url_for( array_merge(array('sf_route' => $this->getUrlForAction('new')))).$extra,
           'method' => 'GET',
           'before' => 'jQuery("#'.$params['jq_dialogbox'].'").html();',
           'after'  => 
@@ -55,12 +60,17 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper extends s
   public function linkToDialogEdit($object, $params)
   {
     $params['ui-icon'] = $this->getIcon('edit', $params);
+
+    $params = $this->getAdminExtendUrl($params);    
+	  $html_options = _parse_attributes($params['params']);
+    $extra = $html_options['query_string'] ? '?'.$html_options['query_string'] : '';
+    
     return '<li class="sf_admin_action_edit">'.
       jq_link_to_remote(
         UIHelper::addIcon($params) . __($params['label'], array(),  '<?php $this->getI18nCatalogue()?>'), 
         array(
           'update' => $params['jq_dialogbox'], 
-          'url'    => url_for( array_merge(array('sf_route' => $this->getUrlForAction('edit')), array('sf_subject' => $object))),
+          'url'    => url_for( array_merge(array('sf_route' => $this->getUrlForAction('edit')), array('sf_subject' => $object))).$extra,
           'method' => 'GET',
           'before' => 'jQuery("#'.$params['jq_dialogbox'].'").html();',
           'after'  => '
