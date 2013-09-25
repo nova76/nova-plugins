@@ -95,15 +95,16 @@ class sfWidgetFormPlain extends sfWidgetForm
       $hiddenInput = new sfWidgetFormInputHidden();
       return $this->renderContentTag('div', isset($choices[$value])?$choices[$value]:$this->getOption('empty'), $attributesDiv).$hiddenInput->render($name, $value, $attributes, $errors);
     }
-    elseif (false!==$this->getOption('showed_value'))
+    
+    if (false!==$this->getOption('showed_value'))
     {
       $hiddenInput = new sfWidgetFormInputHidden();
-      return $this->renderContentTag('div', $this->getOption('showed_value'), $attributesDiv).$hiddenInput->render($name, $value, $attributes, $errors);
+      return $this->renderContentTag('div', nl2br($this->getOption('showed_value')), $attributesDiv).$hiddenInput->render($name, $value, $attributes, $errors);
     }
     elseif (false!==$this->getOption('has_hidden'))
     {
       $hiddenInput = new sfWidgetFormInputHidden();
-      return $this->renderContentTag('div', $value, $attributesDiv).$hiddenInput->render($name, $value, $attributes, $errors);
+      return $this->renderContentTag('div', nl2br($value), $attributesDiv).$hiddenInput->render($name, $value, $attributes, $errors);
     }
         
     return $this->renderContentTag('div', $value, $attributes);  
