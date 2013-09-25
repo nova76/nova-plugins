@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
 	    modal: true,
 	    buttons: {
 	      Save: function() {
-		      jQuery('.sf_admin_form form').ajaxForm({
+		      jQuery('#<?php echo $jq_dialogbox?> .sf_admin_form form').ajaxForm({
             success: function(data){
 		          jQuery('#<?php echo $jq_dialogbox?>').html(data);
 		    	    [?php include_partial('afterDialogEdit'); ?]
