@@ -82,6 +82,8 @@ class sfWidgetFormDateJQueryUI extends sfWidgetForm
     $sw = $this->getOption("show_week") ? "true" : "false";
     $yearRange = $this->getOption("year_range");
     
+    $jsClass = $this->getJsClass();
+    
     if ($culture!='en')
     {
     $html .= <<<EOHTML
@@ -97,7 +99,7 @@ class sfWidgetFormDateJQueryUI extends sfWidgetForm
     selectWeek = true;
     closeOnSelect = false;    
     $image
-    $("#$id").datepicker(params);
+    $("#$id").$jsClass(params);
 	});
 </script>
 EOHTML;
@@ -115,7 +117,7 @@ EOHTML;
     params.showWeek = $sw;
     params.yearRange = '$yearRange' ; 
     $image
-    $("#$id").datepicker(params);
+    $("#$id").$jsClass(params);
 	});
 </script>
 EOHTML;
@@ -124,6 +126,12 @@ EOHTML;
     return $html;
   }
 
+  protected function getJsClass()
+  {
+    return 'datepicker';
+  }
+  
+  
  /*
    *
    * Gets the stylesheet paths associated with the widget.
