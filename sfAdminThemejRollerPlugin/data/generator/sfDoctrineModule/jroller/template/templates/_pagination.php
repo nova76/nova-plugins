@@ -2,6 +2,7 @@
 $first = ($pager->getPage() * $pager->getMaxPerPage() - $pager->getMaxPerPage() + 1);
 $last = $first + $pager->getMaxPerPage() - 1;
 $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availableLimitNumbers : array('10'=>'10', '20'=>'20', '50'=>'50', '100'=>'100', '200'=>'200');
+$availableLimitNumbers = ($availableLimitNumbers instanceof sfOutputEscaperArrayDecorator) ? $availableLimitNumbers->getRawValue() : $availableLimitNumbers;
 ?]
 [?php $extend_url = has_slot('sf_admin.extend_url') ? get_slot('sf_admin.extend_url').'&' : '' ?]
 
@@ -9,6 +10,7 @@ $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availabl
   <tbody>
     <tr>
       <td class="left">
+        [?php if (!empty($availableLimitNumbers)): ?]
         [?php 
           $select = new sfWidgetFormChoice(array('choices'=>$availableLimitNumbers));
       	  echo __('%1% hits per page', array('%1%' => $select->render('paginator_hitperpage', $pager->getMaxPerPage())))
@@ -18,6 +20,7 @@ $availableLimitNumbers = isset($pager->availableLimitNumbers) ? $pager->availabl
             document.location.href = '[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]+?[?php echo $extend_url;?]limit='+this.value;
           }
         </script>      
+        [?php endif ?] 
       </td>
       <td class="center">
         <table align="center" class="sf_admin_pagination">
