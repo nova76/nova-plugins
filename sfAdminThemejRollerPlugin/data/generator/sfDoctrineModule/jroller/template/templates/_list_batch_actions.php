@@ -3,6 +3,7 @@
   <select name="batch_action">
     <option value="">[?php echo __('Choose an action', array(), 'sf_admin') ?]</option>
     <?php foreach ((array) $listActions as $action => $params): ?>
+      <?php $action = isset($params['action']) ? $params['action'] : $action ?>
       <?php echo $this->addCredentialCondition('<option value="'.$action.'">[?php echo __(\''.$params['label'].'\', array(), \'sf_admin\') ?]</option>', $params) ?>
     <?php endforeach; ?>
   </select>
