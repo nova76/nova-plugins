@@ -17,6 +17,7 @@
   <div id="sf_admin_content">
     <?php if ($this->configuration->getValue('list.batch_actions')): ?>
       <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'batch')) ?]" method="post" id="sf_admin_content_form">
+      [?php include_partial('<?php echo $this->getModuleName() ?>/include_form_extend_variables', array('configuration' => $configuration, 'helper' => $helper)) ?]
     <?php endif; ?>
 
       <?php if ($actions = $this->configuration->getValue('list.actions')): ?>
