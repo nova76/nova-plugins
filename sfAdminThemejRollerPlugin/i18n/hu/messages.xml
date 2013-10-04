@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="hu" datatype="plaintext" original="messages" date="2010-06-09T00:22:00Z" product-name="messages">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>Actions</source>
+        <target>Műveletek</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>New</source>
+        <target>Új</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>The item was updated successfully.</source>
+        <target>Sikeres mentés</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Required.</source>
+        <target>Kötelező megadni</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>The item was created successfully.</source>
+        <target>Az elem létrehozása sikerült.</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>The item has not been saved due to some errors.</source>
+        <target>Nem sikerült elmenteni, hiba történt.</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Are you sure?</source>
+        <target>Biztos benne?</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Filters</source>
+        <target>Szűrők</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>from</source>
+        <target>tól</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>to</source>
+        <target>ig</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>Filter</source>
+        <target>Szűrés</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>filters</source>
+        <target>Szűrés</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>"%value%" must be at most %max%.</source>
+        <target>Maximálisan megadható érték: %max%</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>"%value%" must be at least %min%.</source>
+        <target>Minimum érték: %min%</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <source>An object with the same "%column%" already exist.</source>
+        <target>Egy elem már létezik ugyanezzel a(z) %column% értékkel</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>Back to list</source>
+        <target>Vissza a listára</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>Invalid.</source>
+        <target>Helytelen!</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>You don't have the required permission to access this page.</source>
+        <target>Önnek nincs jogosultsága ezen oldal megtekintéséhez.</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <source>View %1% - %2% of %3%</source>
+        <target>Megjelenítve: %1% - %2% (összesen: %3%)</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>Page</source>
+        <target>Oldal</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>of %1%</source>
+        <target> / %1%</target>
+      </trans-unit>
+      <trans-unit id="22">
+        <source>Reset</source>
+        <target>Alapállapot</target>
+      </trans-unit>
+      <trans-unit id="23">
+        <source>Filter</source>
+        <target>Szűrés</target>
+      </trans-unit>
+      <trans-unit id="24">
+        <source>Email2</source>
+        <target>Email ismét</target>
+      </trans-unit>
+      <trans-unit id="25">
+        <source>Password</source>
+        <target>Jelszó</target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source>Password2</source>
+        <target>Jelszó ismét</target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source>The passwords did not match.</source>
+        <target>A jelszavak nem egyeznek meg.</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>The email addresses did not match.</source>
+        <target>Az email címek nem egyeznek meg.</target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source>The username and/or password is invalid.</source>
+        <target>A felhasználónév és/vagy jelszó nem megfelelő.</target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source>Remember</source>
+        <target>Emlékezz rám</target>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>yes or no</source>
+        <target>igen vagy nem</target>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>yes</source>
+        <target>igen</target>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>no</source>
+        <target>nem</target>
+      </trans-unit>
+      <trans-unit id="34">
+        <source>Username</source>
+        <target>Felhasználónév</target>
+      </trans-unit>
+      <trans-unit id="35">
+        <source>View Place</source>
+        <target>Esemény helyszín megtekintése</target>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>Projects</source>
+        <target>Projektek</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Hrcloud recruitment</source>
+        <target>Milyen toborzási rendszert használnak?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrcloud cv</source>
+        <target>Hogyan szűrik meg az önéletrajzokat?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrcloud notify</source>
+        <target>Hogyan értesítik a jelölteket?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrcloud database</source>
+        <target>Van-e saját adatbázisuk?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrcloud filter</source>
+        <target>Ha van, akkor hogyan tudnak benne szűrni?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrcloud flatrate</source>
+        <target>Érdekli-e átalánydíjas megoldás?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunter internet</source>
+        <target>Milyen internetes portálokon hirdetnek?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunter packet</source>
+        <target>Milyen csomagáron?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunter problem</source>
+        <target>Ezekkel mi a fő probléma?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunter limit</source>
+        <target>Milyen limitekkel hirdetnek, vagy korlátlan megjelenést kapnak?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunter system</source>
+        <target>Xml tükrözés, vagy más automatikus hirdetés-átemelő rendszer van-e?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunter cheap</source>
+        <target>Érdekli-e őket olcsó, hatékony online toborzás?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunting using</source>
+        <target>Használnak-e fejvadászcéget?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunting yes</source>
+        <target>Ha igen, kiket?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunting satisfied</source>
+        <target>Mennyire elégedettek?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunting price</source>
+        <target>Milyen árakon dolgoznak?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunting pozicion</source>
+        <target>Milyen pozíciókra szoktak igénybe venni?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunting open</source>
+        <target>Most milyen nyitott pozik vannak?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hunting bap</source>
+        <target>BAP kipróbálására nyitott-e?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner theme</source>
+        <target>Milyen aktuális témáik vannak 2011-re?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner using</source>
+        <target>Használnak-e AC-t, DC-t? Elégedettek-e vele?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner payment</source>
+        <target>Van-e átlátható bérrendszer/javadalmazási rendszer? Mennyire elégedettek vele?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner outplacement</source>
+        <target>Terveznek-e leépítéseket? Outplacement érdekes lehet-e</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner performance</source>
+        <target>Van-e teljesítmény értékelési rendszer? Mennyire elégedettek vele?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner trener</source>
+        <target>Ők, mint HR-esek milyen képzésekre, tréningekre szoktak járni?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner hr</source>
+        <target>Vannak-e belső trénereik? Lenne-e szükség rájuk?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner interesting</source>
+        <target>Milyen témák lennének érdekesek számára, mint HR-es számára egy tréningen?</target>
+        </trans-unit>    
+      <trans-unit>
+        <source>Hrpartner day</source>
+        <target>Milyen napokra ütemezne be szívesen HR-es témájú tréningeket?</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrsource problem</source>
+        <target>Van-e olyan pronléma, amelyre nincsen belső erőforrás</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Hrsource area</source>
+        <target>Melyik területen tudja elképzelni, hogy bevonjon külső erőforrást</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>HR_FELHO</source>
+        <target>HR FELHŐ</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>ONLINE_VERDIJ</source>
+        <target>ONLINE/VÉRDÍJ</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>FEJVADASZAT</source>
+        <target>FEJVADÁSZAT</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>HR_PARTNER</source>
+        <target>HR PARTNER</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>EGYEB</source>
+        <target>EGYÉB</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Personal cmt</source>
+        <target>Saját vélemény a jelöltbemutatón tapasztalatakról</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Principal cmt</source>
+        <target>A Megbízó véleménye a jelöltbemutatón tapasztalatakról</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Recommendationstatus</source>
+        <target>Jelölt státusz</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Company</source>
+        <target>Cég</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Project</source>
+        <target>Projekt</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Document type</source>
+        <target>Az esemény tárgya</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Document value</source>
+        <target>Az ajánlat / szerződés értéke</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Document cmt</source>
+        <target>Eredmény / tapasztalatok, megjegyzések </target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Distance</source>
+        <target>Távolság</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Employment</source>
+        <target>Foglalkoztatottak száma nagyságrendileg</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Proprietary</source>
+        <target>Tulajdonosi viszonyok</target>
+      </trans-unit>    
+      <trans-unit>
+        <source>Candidate</source>
+        <target>Jelölt</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Last workplace</source>
+        <target>Utolsó munkahely</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Job search motive</source>
+        <target>Munkakeresés oka</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Valuation</source>
+        <target>Átfogó értékelés (részletes leírás az interjún tapasztaltakról)</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Salarycategory</source>
+        <target>Bérigény</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Work out time</source>
+        <target>Lehetséges munkábaállás / felmondási idő</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>ajanlat</source>
+        <target>Ajánlatadás</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>szerzodes</source>
+        <target>Szerződeskötés</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Advertiser scopes list</source>
+        <target>Iparág</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>netto</source>
+        <target>Nettó</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>brutto</source>
+        <target>Bruttó</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Languages</source>
+        <target>Nyelvek</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Salary type</source>
+        <target>Bérigény típusa</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Employment count</source>
+        <target>Foglalkoztatottak száma pontosan</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Contacts list</source>
+        <target>Résztvevők a cég oldaláról</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Bap user list</source>
+        <target>Résztvevők</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>Bap user list primary</source>
+        <target>Felelős</target>
+      </trans-unit> 
+      <trans-unit id="19">
+        <source>%1% hits per page</source>
+        <target>%1% tétel az oldalon</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>Contacts</source>
+        <target>Céges kapcsolattartók</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>Count panasz</source>
+        <target>Panaszok száma</target>
+      </trans-unit>
+      <trans-unit id="22">
+        <source>Created at</source>
+        <target>Készült</target>
+      </trans-unit>
+      <trans-unit id="23">
+        <source>Updated at</source>
+        <target>Módosult</target>
+      </trans-unit>
+      <trans-unit id="24">
+        <source>Creator</source>
+        <target>Moderátor</target>
+      </trans-unit>
+      <trans-unit id="25">
+        <source>Modifier</source>
+        <target>Módosította</target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source>Szoveg</source>
+        <target>Szöveg</target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source>Hatarido</source>
+        <target>Határidő</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>Felelos</source>
+        <target>Felelős</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>Count intezkedes</source>
+        <target>Intézkedésekok száma</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

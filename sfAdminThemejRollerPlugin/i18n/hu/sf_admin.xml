@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="hu" datatype="plaintext" original="messages" date="2010-06-09T00:22:00Z" product-name="messages">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>Choose an action</source>
+        <target>Válasszon</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>go</source>
+        <target>Mehet</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Back to list</source>
+        <target>Vissza a listára</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Are you sure?</source>
+        <target>Biztos benne?</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Filter</source>
+        <target>Szűrés</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Reset</source>
+        <target>Alapállapot</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Show</source>
+        <target>Megtekint</target>
+      </trans-unit>    
+    </body>
+  </file>
+</xliff>
