@@ -6,6 +6,7 @@ class NestedSetHelper
     $res = '<ul>';
     foreach ($nodes as $node) 
     {
+        if ($node->getTable()->hasTemplate('Doctrine_Template_SoftDelete') && !is_null($node->deleted_at )) continue;
         $res .= "<li id=\"".$idprefix.$node['id']."\"><a href=\"#\">".$node->$key_method()."</a>";
         if ($node->getNode()->hasChildren()) {
             $res .= self::create_html_list($node->getNode()->getChildren(), $idprefix, $key_method);
