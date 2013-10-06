@@ -1,17 +1,21 @@
   public function executeDelete(sfWebRequest $request)
   {
     $request->checkCSRFProtection();
-
+    
     $this->dispatcher->notify(new sfEvent($this, 'admin.delete_object', array('object' => $this->getRoute()->getObject())));
 
+    $obj = $this->getRoute()->getObject();
+    
+    if ($obj->getTable()->hasTemplate('Doctrine_Template_SoftDelete') && !is_null($obj->deleted_at))
+    {
+      $this->redirect404();
+    }
+    
     if ($this->configuration->getValue('list.layout') == 'nestedset')
     {
-      $this->getRoute()->getObject()->getNode()->delete();
+      $obj->getNode()->delete();
     }
-    else
-    {
-      $this->getRoute()->getObject()->delete();  
-    }
+    $this->getRoute()->getObject()->delete();  
 
     if ($request->isXmlHttpRequest())
     {

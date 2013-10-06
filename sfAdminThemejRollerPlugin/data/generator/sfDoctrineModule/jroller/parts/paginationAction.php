@@ -35,6 +35,7 @@
   
   protected function buildQuery()
   {
+    
     $tableMethod = $this->configuration->getTableMethod();
 <?php if ($this->configuration->hasFilterForm()): ?>
     if (is_null($this->filters))
@@ -60,5 +61,10 @@
     $event = $this->dispatcher->filter(new sfEvent($this, 'admin.build_query'), $query);
     $query = $event->getReturnValue();
 
+    if ( Doctrine::getTable('<?php echo $this->getModelClass() ?>') ->hasTemplate('Doctrine_Template_SoftDelete') )
+    {
+      $query->addWhere('deleted_at is null');
+    }
+    
     return $query;
   }
