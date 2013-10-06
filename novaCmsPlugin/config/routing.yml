@@ -1,0 +1,19 @@
+cms_cmsAdmin:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Cms
+    module:               cmsAdmin
+    prefix_path:          /cmsAdmin
+    column:               id
+    with_wildcard_routes: true
+    
+cms_slug:
+  url:   /:slug
+  class: cmsDoctrineRoute
+  options: { model: Cms, type: object, method: retrieveBySlug }
+  param: { module: cms, action: show }
+  requirements:  
+    slug: (?:[^?]*) 
+    sf_method: [post, get]    
+  
+  

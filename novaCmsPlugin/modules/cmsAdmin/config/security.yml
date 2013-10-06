@@ -1,0 +1,3 @@
+all:
+  is_secure: false
+  credentials: [[ superadmin, cms_admin ]]

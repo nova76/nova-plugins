@@ -1,0 +1,46 @@
+Cms:
+  actAs:
+    Timestampable: 
+      created:
+        name: created_at
+        type: timestamp
+        options: {notnull: false}  
+        options: {notnull: false}  
+      updated:
+        name: updated_at
+        type: timestamp
+        options: {notnull: false}      
+    SoftDelete: ~
+    NestedSet: 
+      hasManyRoots: true
+      rootColumnName: root_id
+    I18n:
+      fields: [title, slug, content, description, keywords]          
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true  
+    published:
+      type: boolean
+      default: true
+    title: 
+      type: string(60)
+      notnull: true
+    slug:   
+      type: string(60)
+      notnull: true
+    keywords: blob
+    description: blob
+    content: blob
+    is_module:  
+      type: boolean
+      default: false
+    route:
+      type: string(200)
+      notnull: false    
+    loggedin: 
+      type: enum
+      default: "all"  
+      values:  [loggedin, logout, all, none]         
+      comment: "a felhasznalo belepesetol teszi fuggove a megjelenest es elerhetoseget"

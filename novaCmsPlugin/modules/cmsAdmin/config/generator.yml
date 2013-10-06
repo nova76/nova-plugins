@@ -1,0 +1,64 @@
+generator:
+  class: jRollerDoctrineGenerator
+  param:
+    model_class:           Cms
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          cms_cmsAdmin
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    config:
+      actions: ~
+      show:
+        title: "Tartalom adatai"
+        display: [slug, title, published, description, keywords, content]
+      fields:
+        slug:                   { label: Oldal hivatkozás, is_sortable: false }
+        title:                  { label: Cím, is_sortable: false }
+        published:              { label: Publikált, is_sortable: false }
+        loggedin:               { label: Felhasználó státusza, is_sortable: false }
+        keywords:               { label: Kulcsszavak, is_sortable: false }
+        description:            { label: Leiras, is_sortable: false }
+        content:                { label: Tartalom }
+        lft:                    { is_sortable: false } 
+        rgt:                    { is_sortable: false } 
+        level:                  { is_sortable: false } 
+      list:  
+        layout: nestedset 
+        title: Dinamikus tartalmak  
+        display: [getTitle] #ez a metodus jeleniti meg a faban, ellenkezo esetben a __toString lesz
+        object_actions:
+          _show:      
+            jq_dialogbox : show_dialog      
+          _edit:       
+            #jq_dialogbox : edit_dialog      
+          _delete:      
+            remote : true
+            afterRemote : refreshList # or removeRow        
+        batch_actions:   []
+        actions:
+          _new: 
+            label: Új tartalom
+            #jq_dialogbox : new_dialog
+      filter:  
+        template: table-caption #top
+        extra_css_class: false #"sf_admin_edit ui-widget ui-widget-content ui-corner-all"
+        display:         [published, loggedin] 
+      form:  
+        fields:
+          title:                  { label: Cím, help: "A böngésző címsorában lesz látahtó. Minél több kulcsszó szerepeljen, lehetőleg ragozatlan formában a Title Tag-ben, de egyúttal igyekezzünk tömören megfogalmazni, hogy miről szól az adott oldalunk"}
+          # slug:                   { label: Oldal hivatkozás, help: help: "A kereső optimalizálás szempontjából döntő fontosságú, hogy minden oldalunk egyedi címsorral rendelkezzen. Itt ékezet nélkül egy szóban kell megadni az oldal címét"}
+          before:                 { label: Sorrend, help: "A menüben a kiválasztott menüpont után jelenik meg, ha üres, akkor ez lesz az első elem."}
+          published:              { label: Publikált, help: 'Ezzel válik elérhető bárki számára.'}
+          loggedin:               { label: Felhasználó státusza, help: 'A felhasználó/látogató bejelentkezett, vagy kijelentkezett, vagy bármilyen állapotban látja'}
+          keywords:               { label: Kulcsszavak, help: "Kulcsszavak, vagy inkább kulcs kifejezések a weboldal témájára vonatkozóan. A fontosságuk szerinti sorrendben soroljuk fel őket, a legfontosabbal kezdve, egymástól vesszővel elválasztva. A Keywords Meta Tag hosszát érdemes 255 karakter alatt tartani. A Keywords értékét a nagyobb keresők figyelmen kívül hagyják tapasztalatunk szerint, de néhány kisebb kereső továbbra is figyelembe veszi, ezért használatát ne hagyjuk el"}
+          description:            { label: Leiras, help: "Gyakran ennek a Meta Tag-nek az értéke jelenik meg a keresők találati oldalain az oldalunk címe alatti részletezésnél. Adjunk meg 2-3 értelmes mondatot, ami jól leírja, hogy mivel foglalkozik az adott oldal. Érdemes 300 karakter körül limitálni a Description Meta Tag hosszát"}
+          # content:                { label: Tartalom}
+        display: ~
+      edit:    
+        title: Tartalom szerkesztése
+      new:     
+        title: Új tartalom rögzítése

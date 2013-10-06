@@ -1,0 +1,15 @@
+/* /web/css/nested-set.css */
+
+.sf_admin_list_td_title span {
+  background-position: center left;
+  background-repeat: no-repeat;
+  padding: .2em 0 .2em 2.0em;
+}
+
+.sf_admin_list_td_title span.leaf {
+  background-image: url('../images/icons/tree-leaf.png');
+}
+
+.sf_admin_list_td_title span.node {
+  background-image: url('../images/icons/tree-node.png');
+}
