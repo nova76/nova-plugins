@@ -1,0 +1,41 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           sfGuardUser
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          sf_guard_user
+    with_doctrine_route:   true
+
+    config:
+      fields:
+        password_again: { label: "Jelszó (újra)" }
+        username: {label: 'Bejelentkezési név'}
+        is_active: {label: 'Aktív'}
+
+      list:
+        title:   User list
+        display: [=username, created_at, updated_at, last_login, _groups, is_super_admin]
+
+      form:
+        class: sfGuardUserAdminForm
+        display: 
+          - first_name
+          - last_name
+          - email_address
+          - username
+          - password
+          - password_again
+          - is_active
+          - is_super_admin
+          - groups_list
+          # - permissions_list
+
+      edit:
+        title: Felhasználó adatainak szerkesztése ("%%username%%")
+
+      new:
+        title: New User

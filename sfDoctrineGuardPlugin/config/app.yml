@@ -1,0 +1,7 @@
+all:
+  sf_guard_plugin:
+    allow_login_with_email : false
+    routes_register: true
+  email:
+    notification_email: somebody@gmail.com    
+    notification_name: somebody
