@@ -1,0 +1,6 @@
+all:
+  ckeditor:
+    basePath: /sfCKEditorPlugin/js/ckeditor/
+  ckfinder:
+    active: true
+    basePath: /sfCKEditorPlugin/js/ckfind
