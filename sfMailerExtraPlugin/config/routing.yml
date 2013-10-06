@@ -1,0 +1,35 @@
+mail_queue:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                MailQueue
+    module:               MailQueue
+    prefix_path:          /MailQueue
+    column:               id
+    with_wildcard_routes: true
+    
+mail_template:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                MailTemplate
+    module:               sfMailTemplateAdmin
+    prefix_path:          /sfMailTemplateAdmin
+    column:               id
+    with_wildcard_routes: true    
+    
+mail_recipient:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                MailRecipient
+    module:               MailRecipientAdmin
+    prefix_path:          /MailRecipientAdmin
+    column:               id
+    with_wildcard_routes: true    
+    
+mail_channel:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                MailChannel
+    module:               MailChannelAdmin
+    prefix_path:          /MailChannelAdmin
+    column:               id
+    with_wildcard_routes: true    

@@ -1,0 +1,119 @@
+MailQueue:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true    
+    subject: 
+      type: string(255)
+      notnull: true
+    content: 
+      type: text
+      notnull: true
+    message: 
+      type: longtext
+    from_name: 
+      type: string(255)
+      notnull: true
+    from_mail: 
+      type: string(255)
+      notnull: true
+    to_name: 
+      type: string(255)
+      notnull: true
+      comment: cimzett neve   
+    to_email: 
+      type: string(255)
+      notnull: true
+      comment: cimzett email cime   
+    inprogress:
+      type: boolean
+      comment: kuldes alatt, kotegelt kuldes miatt
+      default: false
+    sended: 
+      type: boolean
+      comment: ki lett-e kuldve
+      default: false
+    validate:
+      type: timestamp
+      default: '1970-01-01'
+      comment: 'idopont, ekkor kuldheto ki a level'        
+      
+MailTemplate:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true    
+    subject: 
+      type: string(255)
+      notnull: true
+    content: 
+      type: blob
+      notnull: notnull
+    description: 
+      type: blob
+    from_name:
+      type: text
+    from_mail:  
+      type: text
+    
+MailChannel:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true    
+    name: 
+      type: string(255)
+      notnull: true
+      
+MailRecipient:      
+  actAs:
+    Timestampable: ~
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true    
+    name: 
+      type: string(255)
+      notnull: true
+    email:  
+      type: text
+  relations:     
+    Channels:
+      class: MailChannel
+      refClass: MailChannelRecipient
+      local: recipient_id
+      foreign: channel_id  
+      foreignType:  many
+      
+MailChannelRecipient:      
+  actAs:
+    Timestampable: ~
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true    
+    recipient_id:
+      type: integer(11)
+    channel_id:
+      type: integer(11)   
+  relations:
+    MailChannel:
+      local: channel_id
+      foreign: id
+      type: one
+    MailRecipient:
+      local: recipient_id
+      foreign: id
+      type: one      
+      

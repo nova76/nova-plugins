@@ -1,0 +1,31 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           MailTemplate
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          mail_template
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        subject: {label: Tárgy}
+        content: {label: Tartalom}
+        description: {label: Leírás}
+        from_name: {label: Üzenet küldőjének neve }
+        from_mail: {label: Üzenet küldőjének e-mail címe }
+      list:    
+        title: E-mail Templatek
+        display: [id, _subject, from_name, from_mail, updated_at]
+      filter:  
+        display: [id, subject, from_name, from_mail]
+      form:    ~
+      edit:    
+        title: E-mail Template szerkesztése
+      new:     
+        title: Új E-mail Template
