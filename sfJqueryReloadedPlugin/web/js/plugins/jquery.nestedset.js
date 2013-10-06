@@ -106,10 +106,17 @@ $.fn.nestedset.showNode = function (node){
 	  if (arguments.length > 0) { node = arguments[0]; node = node.parent('li'); }
 	  else node = $("#"+defaults.treeId).jstree("get_selected");
 	  if (node.length==0) return false;
-	  $('#'+$.fn.nestedset.defaults.dialogShowBoxId).load(
-	    $.fn.nestedset.defaults.indexUrl + '/' + node.attr('id').replace(defaults.idprefix, ''), 
-	    function(){$('#'+defaults.dialogShowBoxId).dialog('open');}
-	  )
+	  if ($.fn.nestedset.defaults.dialogShowBoxId == false)
+	  {
+      window.location.href = $.fn.nestedset.defaults.indexUrl + '/' + node.attr('id').replace(defaults.idprefix, '');	    
+	  }
+	  else
+	  {
+  	  $('#'+$.fn.nestedset.defaults.dialogShowBoxId).load(
+  	    $.fn.nestedset.defaults.indexUrl + '/' + node.attr('id').replace(defaults.idprefix, ''), 
+  	    function(){$('#'+defaults.dialogShowBoxId).dialog('open');}
+  	  )
+	  }
 }
 
 $.fn.nestedset.editNode = function (node){
@@ -117,10 +124,17 @@ $.fn.nestedset.editNode = function (node){
 	  if (arguments.length > 0) { node = arguments[0]; node = node.parent('li'); }
 	  else node = $("#"+defaults.treeId).jstree("get_selected");
 	  if (node.length==0) return false;
-	  $('#'+$.fn.nestedset.defaults.dialogEditBoxId).load(
-	    $.fn.nestedset.defaults.indexUrl + '/' + node.attr('id').replace(defaults.idprefix, '') + '/edit', 
-	    function(){$('#'+defaults.dialogEditBoxId).dialog('open');}
-	  )
+	  if ($.fn.nestedset.defaults.dialogEditBoxId == false)
+	  {
+      window.location.href = $.fn.nestedset.defaults.indexUrl + '/' + node.attr('id').replace(defaults.idprefix, '') + '/edit';
+	  }
+	  else
+	  {
+  	  $('#'+$.fn.nestedset.defaults.dialogEditBoxId).load(
+  	    $.fn.nestedset.defaults.indexUrl + '/' + node.attr('id').replace(defaults.idprefix, '') + '/edit', 
+  	    function(){$('#'+defaults.dialogEditBoxId).dialog('open');}
+  	  )
+	  }
 } 
 
 $.fn.nestedset.deleteNode = function (node){
@@ -148,10 +162,17 @@ $.fn.nestedset.newNode = function (parentNode){
   if (arguments.length > 0) { parentNode = arguments[0]; parentNode = parentNode.parent('li'); }	  
   else parentNode = $("#"+defaults.treeId).jstree("get_selected")
   if (parentNode.length==0) return false;
-  $('#'+$.fn.nestedset.defaults.dialogNewBoxId).load(
-	defaults.indexUrl + '/' + parentNode.attr('id').replace(defaults.idprefix, '') + '/new', 
-    function(){ $('#'+defaults.dialogNewBoxId).dialog('open'); }
-  )          
+  if ($.fn.nestedset.defaults.dialogNewBoxId == false)
+  {
+    window.location.href = defaults.indexUrl + '/' + parentNode.attr('id').replace(defaults.idprefix, '') + '/new';
+  }
+  else
+  {
+    $('#'+$.fn.nestedset.defaults.dialogNewBoxId).load(
+  	defaults.indexUrl + '/' + parentNode.attr('id').replace(defaults.idprefix, '') + '/new', 
+      function(){ $('#'+defaults.dialogNewBoxId).dialog('open'); }
+    )          
+  }  
 }
 
 
