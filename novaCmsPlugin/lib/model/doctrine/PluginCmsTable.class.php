@@ -27,7 +27,7 @@ class PluginCmsTable extends Doctrine_Table
       
       return $this->createQuery('c')
             ->leftJoin('c.Translation t')
-            ->where('not c.deleted')
+            ->where('c.deleted_at is null')
             ->addWhere('t.slug = ?', $options['slug'])->fetchOne();
       
       //return $this->findOneBy('Translate.slug', $options['slug']) ;
