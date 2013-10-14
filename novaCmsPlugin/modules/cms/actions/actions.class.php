@@ -13,5 +13,9 @@ class cmsActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->page = $this->getRoute()->getObject();
+    if ($this->page->get('is_module'))
+    {
+      $this->redirect($this->page->get('route'));
+    }    
   }
 }
