@@ -1,6 +1,6 @@
 <?php
 
-class BaseTfCmsComponents extends sfComponents
+class BaseNovaCmsComponents extends sfComponents
 {
   public function executeShowContent()
   {
@@ -33,7 +33,7 @@ class BaseTfCmsComponents extends sfComponents
     
     $treeObject = Doctrine_Core::getTable('Cms')->getTree();
     
-    $event = $this->dispatcher->filter(new sfEvent($this, 'tfCms.component.getTree'), $treeObject);
+    $event = $this->dispatcher->filter(new sfEvent($this, 'novaCms.component.getTree'), $treeObject);
     $treeObject = $event->getReturnValue();
     
     $this->root = $treeObject->fetchRoot();
@@ -50,4 +50,38 @@ class BaseTfCmsComponents extends sfComponents
     
   }
   
+  /**
+  *  template : megadja hogy komponens jeleniti meg a menut.
+  *  layout   : hogyan jeleniti meg a visszakapott templatet.
+  */
+  public function executeMenu()
+  {
+    $this->template = isset($this->template) ? $this->template  : 'menuItem';
+    $this->layout   = isset($this->layout)   ? $this->decorator : '<ul id="fomenu">%s</ul>';
+
+    if (isset($this->slug))
+    {
+       $this->root = Doctrine_Core::getTable('Cms')->retrieveBySlug(array('slug'=>$this->slug));
+    }
+    else 
+    {
+      $treeObject = Doctrine_Core::getTable('Cms')->getTree();  
+      $this->root = $treeObject->fetchRoot();
+    }
+    
+    $event = $this->dispatcher->filter(new sfEvent($this, 'novaCms.component.getMenu'), $this->root);
+    $treeObject = $event->getReturnValue();
+    
+    
+  }
+
+  /**
+   * Enter description here...
+   *
+   */
+  public function executeMenuItem()
+  {
+    $this->children = $this->child->getNode()->getChildren();
+    $this->template = isset($this->template) ? $this->template : 'list';
+  }   
 }
