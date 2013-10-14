@@ -11,13 +11,21 @@ generator:
     with_doctrine_route:   true
 
     config:
+      filter:
+        display: [username, first_name, last_name, email_address, is_active, is_super_admin]
+          
       fields:
-        password_again: { label: "Jelszó (újra)" }
-        username: {label: 'Bejelentkezési név'}
-        is_active: {label: 'Aktív'}
-
+        password_again:  { label: "Jelszó (újra)" }
+        username:        { label: 'Bejelentkezési név' }
+        is_active:       { label: 'Aktív' }
+        groups:          { label: 'Csoport tagság' }
+        is_super_admin:  { label: 'Superadmin' }
+        last_login:      { label: 'Utolsó bejelentkezés' }
+        first_name:      { label: 'Keresztnév' }
+        last_name:       { label: 'Családi neve' }
+        email_address:   { label: 'E-mail cim' }
       list:
-        title:   User list
+        title:   'Felhasználók'
         display: [=username, created_at, updated_at, last_login, _groups, is_super_admin]
 
       form:
@@ -35,7 +43,10 @@ generator:
           # - permissions_list
 
       edit:
-        title: Felhasználó adatainak szerkesztése ("%%username%%")
+        title: 'Felhasználó adatainak szerkesztése ("%%username%%")'
 
       new:
-        title: New User
+        title: 'Új felhasználó'
+        
+      show:
+        display: [=username, first_name, last_name, email_address, is_active, is_super_admin, last_login, created_at, updated_at, last_login,_groups, is_super_admin]  
