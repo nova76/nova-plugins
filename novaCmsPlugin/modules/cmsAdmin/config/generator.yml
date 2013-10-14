@@ -50,13 +50,13 @@ generator:
       form:  
         fields:
           title:                  { label: Cím, help: "A böngésző címsorában lesz látahtó. Minél több kulcsszó szerepeljen, lehetőleg ragozatlan formában a Title Tag-ben, de egyúttal igyekezzünk tömören megfogalmazni, hogy miről szól az adott oldalunk"}
-          # slug:                   { label: Oldal hivatkozás, help: help: "A kereső optimalizálás szempontjából döntő fontosságú, hogy minden oldalunk egyedi címsorral rendelkezzen. Itt ékezet nélkül egy szóban kell megadni az oldal címét"}
+          slug:                   { label: Oldal hivatkozás, help: help: "A kereső optimalizálás szempontjából döntő fontosságú, hogy minden oldalunk egyedi címsorral rendelkezzen. Itt ékezet nélkül egy szóban kell megadni az oldal címét"}
           before:                 { label: Sorrend, help: "A menüben a kiválasztott menüpont után jelenik meg, ha üres, akkor ez lesz az első elem."}
           published:              { label: Publikált, help: 'Ezzel válik elérhető bárki számára.'}
           loggedin:               { label: Felhasználó státusza, help: 'A felhasználó/látogató bejelentkezett, vagy kijelentkezett, vagy bármilyen állapotban látja'}
           keywords:               { label: Kulcsszavak, help: "Kulcsszavak, vagy inkább kulcs kifejezések a weboldal témájára vonatkozóan. A fontosságuk szerinti sorrendben soroljuk fel őket, a legfontosabbal kezdve, egymástól vesszővel elválasztva. A Keywords Meta Tag hosszát érdemes 255 karakter alatt tartani. A Keywords értékét a nagyobb keresők figyelmen kívül hagyják tapasztalatunk szerint, de néhány kisebb kereső továbbra is figyelembe veszi, ezért használatát ne hagyjuk el"}
           description:            { label: Leiras, help: "Gyakran ennek a Meta Tag-nek az értéke jelenik meg a keresők találati oldalain az oldalunk címe alatti részletezésnél. Adjunk meg 2-3 értelmes mondatot, ami jól leírja, hogy mivel foglalkozik az adott oldal. Érdemes 300 karakter körül limitálni a Description Meta Tag hosszát"}
-          # content:                { label: Tartalom}
+          content:                { label: Tartalom}
         display: ~
       edit:    
         title: Tartalom szerkesztése
