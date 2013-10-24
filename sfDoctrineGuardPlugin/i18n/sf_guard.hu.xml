@@ -44,6 +44,10 @@
         <source>Enter your new password in the form below.</source>
         <target>A következő form segítségével változtathatja meg a jelszavát</target>
       </trans-unit>
+      <trans-unit>
+        <source>The two passwords must be the same.</source>
+        <target>A két jelszó meg kell egyezzen</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
