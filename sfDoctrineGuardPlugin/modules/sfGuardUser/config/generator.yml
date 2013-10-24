@@ -12,7 +12,7 @@ generator:
 
     config:
       filter:
-        display: [username, first_name, last_name, email_address, is_active, is_super_admin]
+        display: [username, first_name, last_name, email_address, is_active, is_super_admin, groups_list]
           
       fields:
         password_again:  { label: "Jelszó (újra)" }
@@ -24,6 +24,8 @@ generator:
         first_name:      { label: 'Keresztnév' }
         last_name:       { label: 'Családi neve' }
         email_address:   { label: 'E-mail cim' }
+        phone:           { label: 'Telefon' }
+        groups_list:     { label: 'Csoport tagság' }
       list:
         title:   'Felhasználók'
         display: [=username, created_at, updated_at, last_login, _groups, is_super_admin]

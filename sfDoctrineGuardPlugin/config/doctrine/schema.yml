@@ -59,6 +59,9 @@ sfGuardUser:
       type: string(255)
       notnull: true
       unique: true
+    phone:
+      type: string(255)
+      notnull: false
     username:
       type: string(128)
       notnull: true
