@@ -16,6 +16,7 @@ abstract class novaWidgetFormjQqueryUIAutocomplete extends sfWidgetFormInput
         $this->addRequiredOption('url');
         $this->addOption('appendTo', '');
         $this->addOption('param', 'autocomplete');
+        $this->addOption('desc', false);
         parent::configure($options, $attributes);
     }
     
@@ -29,7 +30,18 @@ abstract class novaWidgetFormjQqueryUIAutocomplete extends sfWidgetFormInput
         $context = sfContext::getInstance();
         $response = $context->getResponse();
         
-        $autocompleteDiv = content_tag('div' , '', array('id' => $this->generateId($name) . '_autocomplete', 'class' => 'autocomplete'));
+        $autocompleteDiv = ""; // content_tag('div' , '', array('id' => $this->generateId($name) . '_autocomplete', 'class' => 'autocomplete'));
+        
+        $desc = '';
+        if (true === $this->getOption('desc'))
+        {
+          $desc = '.data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+                     return $( "<li>" )
+                      .append( "<a>" + item.label + "<br>" + item.desc + "</a>" )
+                      .appendTo( ul );
+                   }';
+                         
+        }
         
         $autocompleteJs = $this->javascriptTag("
               
@@ -53,7 +65,8 @@ abstract class novaWidgetFormjQqueryUIAutocomplete extends sfWidgetFormInput
                     $('#" .get_id_from_name($name)."_ajaxcheckboxText').html('".__('kiválasztva')."');
                     $('#".$this->generateId($name)."').trigger('change', [ui.item])
                   }  
-                });
+                })$desc
+                
               
               
               $.fn.autocomplete.keypressEvent = function (evt, id){
