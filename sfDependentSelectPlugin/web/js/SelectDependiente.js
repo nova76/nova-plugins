@@ -7,8 +7,10 @@
  * file that was distributed with this source code.
  *
  */ 
+
 var SelectDependiente = function(config)
 {
+  
     if (this.instancias[config.id] instanceof SelectDependiente)
     {
         return this.instancias[config.id];
@@ -37,7 +39,7 @@ var SelectDependiente = function(config)
 
     if (typeof this.dependiente === 'string' && this.dependiente.length > 0)
     {
-        this.dependiente = new SelectDependiente({ id: this.dependiente });
+       this.dependiente = new SelectDependiente({ id: this.dependiente });
     }
 
     this.grupo       = '';
@@ -54,6 +56,7 @@ SelectDependiente.prototype.instancias = [];
 
 SelectDependiente.prototype.iniciar = function()
 {
+  
     var self = this;
 
     for (var i in this.params)
@@ -66,6 +69,7 @@ SelectDependiente.prototype.iniciar = function()
 
     this.select.onchange = function() 
     {
+      
         self.cambio(self.select.options[self.select.selectedIndex].value);
     }
     
@@ -78,6 +82,8 @@ SelectDependiente.prototype.iniciar = function()
     }
 
     var mostrarHtml = false;
+    
+    
     for (var i=0; i<this.select.options.length; i++)
     {
         var opt = this.select.options[i];
@@ -91,10 +97,12 @@ SelectDependiente.prototype.iniciar = function()
         }
         else
         {
-            this.opciones['html'][opt.value] = opt.text;
+
+          this.opciones['html'][opt.value] = opt.text;
         }
-        mostrarHtml = true;
+        //mostrarHtml = true;
     }
+    
     if (mostrarHtml === true)
     {
         this.mostrar('html');
@@ -119,7 +127,7 @@ SelectDependiente.prototype.agregarOpcion = function(valor, texto)
     var opcion = document.createElement('option');
     opcion.value = valor;
     opcion.text = texto;
-
+    
     try 
     {
         this.select.add(opcion, null);
@@ -249,7 +257,7 @@ SelectDependiente.prototype.mostrar = function(grupo, forzar)
                     context:  this,
                     success:  function(data)
                     {
-                        this.opciones[this.grupo] = data;
+                      this.opciones[this.grupo] = data;
                     }
                 });
             }
@@ -257,8 +265,22 @@ SelectDependiente.prototype.mostrar = function(grupo, forzar)
         
         for (var valor in this.opciones[this.grupo]) 
         {
-            this.agregarOpcion(valor, this.opciones[this.grupo][valor]);
+          if (this.opciones[this.grupo][valor] instanceof Object)
+          {
+            for (var valor_group in this.opciones[this.grupo][valor]) 
+            {
+              this.agregarOpcion(this.opciones[this.grupo][valor][valor_group]['key'], this.opciones[this.grupo][valor][valor_group]['value']);  
+            }
+          }
+          else
+          {
+            this.agregarOpcion(valor, this.opciones[this.grupo][valor]);  
+          }
         }    
+        if ($.mobile.gradeA() && $("#"+this.params['_ds_id']).data( "selectmenu" ) != undefined)
+        { 
+          $("#"+this.params['_ds_id']).selectmenu("refresh")
+        }
     }
 
     if (forzar === false && this.select.options.length > 0) 

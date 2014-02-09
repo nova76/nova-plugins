@@ -136,7 +136,7 @@ class sfWidgetFormDependentSelect extends sfWidgetForm
     
     public function getJavascripts()
     {
-        $jsConfig = sfConfig::get('app_sfDependentSelectPlugin_js', 'minimized');
+        $jsConfig = sfConfig::get('app_sfDependentSelectPlugin_js', 'normal'); //minimized
         
         if ($jsConfig) {
             $jsName = 'SelectDependiente';
