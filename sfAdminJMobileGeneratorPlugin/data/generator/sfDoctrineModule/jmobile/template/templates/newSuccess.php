@@ -16,6 +16,7 @@
           [?php include_partial('<?php echo $this->getModuleName() ?>/flashes', array( 'form' => $form )) ?]
           [?php include_partial('<?php echo $this->getModuleName() ?>/form', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?]
           [?php include_partial('<?php echo $this->getModuleName() ?>/form_actions', array('show' =>'bottom', '<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?]
+   	      [?php include_partial('<?php echo $this->getModuleName() ?>/form_footer', array('show' =>'bottom', '<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'configuration' => $configuration, 'helper' => $helper)) ?]
         </div >
         
         [?php if (has_partial('global/content-secondary')) : ?]

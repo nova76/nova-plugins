@@ -33,8 +33,16 @@
     <?php echo $this->addCredentialCondition('[?php echo $helper->linkTo'.$method.'($this->getSingularName(), '.$this->asPhp($params).') ?]', $params) ?>
   
   [?php else: ?]
-    <?php echo $this->addCredentialCondition($this->getLinkToAction($name, $params, true), $params) ?>
-  
+          <?php 
+            $params['params'] = @$params['params'] ? $params['params'] : '';
+            $params['params'] .= 'data-theme="' . (@$params['data-theme'] ? $params['data-theme'] : 'e') .'"' ; 
+          ?> 
+         [?php slot('link') ?>
+          <?php echo $this->addCredentialCondition($this->getLinkToAction($name, $params, true), $params) ?>
+         [?php end_slot('link') ?> 
+         [?php
+          echo str_replace('<a ', '<a data-inline="false" data-theme="<?php echo  @$params['data-theme'] ?$params['data-theme'] : 'e' ?>" ui-icon="<?php echo @$params['ui-icon'] ? $params['ui-icon'] : 'check'?>" data-role="button" data-inline="true" data-icon="arrow-l" data-ajax="false" ', get_slot('link')); 
+         ?]
   [?php endif; ?]
     
   <?php endif; ?>
