@@ -36,6 +36,7 @@ class sfWidgetFormPartial extends sfWidgetForm
   {
     $this->addRequiredOption('partial');
     $this->addOption('params', false);
+    $this->addOption('has_hidden', false);
   }
 
   /**
@@ -53,8 +54,18 @@ class sfWidgetFormPartial extends sfWidgetForm
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
     sfContext::getInstance()->getConfiguration()->loadHelpers(array('Partial'));
+    
     $fields = $this->getParent()->getFields();
     $options = is_array($this->getOption('params')) ? $this->getOption('params') : array($this->getOption('params'));
-    return get_partial($this->getOption('partial'), array_merge(compact('value', 'name', 'attributes', 'errors'), $options));
+
+    $partial = get_partial($this->getOption('partial'), array_merge(compact('value', 'name', 'attributes', 'errors'), $options));
+    
+    if (false!==$this->getOption('has_hidden'))
+    {    
+      $hiddenInput = new sfWidgetFormInputHidden();
+      return $partial.$hiddenInput->render($name, $value, $attributes, $errors);
+    }    
+    
+    return $partial;
   }
 }
