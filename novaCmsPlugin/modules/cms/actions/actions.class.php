@@ -16,6 +16,11 @@ class cmsActions extends sfActions
     if ($this->page->get('is_module'))
     {
       $this->redirect($this->page->get('route'));
-    }    
+    } 
+    
+    $this->getResponse()->setTitle($this->page->getTitle());
+    $this->getResponse()->addMeta('keywords', $this->page->getKeywords());
+    $this->getResponse()->addMeta('description',  $this->page->getDescription());
+    
   }
 }

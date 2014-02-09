@@ -57,7 +57,7 @@ class BaseNovaCmsComponents extends sfComponents
   public function executeMenu()
   {
     $this->template = isset($this->template) ? $this->template  : 'menuItem';
-    $this->layout   = isset($this->layout)   ? $this->decorator : '<ul id="fomenu">%s</ul>';
+    $this->decorator = isset($this->decorator)   ? $this->decorator : '<ul id="fomenu">%s</ul>';
 
     if (isset($this->slug))
     {
