@@ -84,6 +84,16 @@ class sfWidgetFormDateJQueryUI extends sfWidgetForm
     
     $jsClass = $this->getJsClass();
     
+    $extraParamsArray = $this->getExtraParams();
+    $extraParams = "";
+    if (is_array($extraParamsArray))
+    {
+      foreach ($extraParamsArray as $key=> $p)
+      {
+        $extraParams .= "params.$key=$p;\r\n";
+      }
+    }
+    
     if ($culture!='en')
     {
     $html .= <<<EOHTML
@@ -99,6 +109,7 @@ class sfWidgetFormDateJQueryUI extends sfWidgetForm
     selectWeek = true;
     closeOnSelect = false;    
     $image
+    $extraParams
     $("#$id").$jsClass(params);
 	});
 </script>
@@ -117,6 +128,7 @@ EOHTML;
     params.showWeek = $sw;
     params.yearRange = '$yearRange' ; 
     $image
+    $extraParams
     $("#$id").$jsClass(params);
 	});
 </script>
@@ -129,6 +141,14 @@ EOHTML;
   protected function getJsClass()
   {
     return 'datepicker';
+  }
+  
+  /**
+   * @return array
+   */
+  protected function getExtraParams()
+  {
+    return array();
   }
   
   
