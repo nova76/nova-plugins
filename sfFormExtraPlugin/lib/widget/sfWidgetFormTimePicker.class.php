@@ -13,8 +13,9 @@ class sfWidgetFormTimePicker extends sfWidgetFormDateJQueryUI
    */
   protected function configure($options = array(), $attributes = array())
   {
-
     parent::configure($options, $attributes);
+    $this->addOption('from', null);
+    $this->addOption('to', null);
   }
 
   /**
@@ -29,17 +30,29 @@ class sfWidgetFormTimePicker extends sfWidgetFormDateJQueryUI
    */
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
-    
-    //fb(date('Y-m-d '(strtotime($value));
-    
     return parent::render($name, $value, $attributes, $errors);
-  
   }
 
   protected function getJsClass()
   {
     return 'timepicker';
   }
+  
+  
+  protected function getExtraParams()
+  {
+    
+    $res = array();
+    if ($this->getOption('from'))
+    {
+      $res['hourMin'] = $this->getOption('from');
+    }
+    if ($this->getOption('to'))
+    {
+      $res['hourMax'] = $this->getOption('to');
+    }
+    return $res;
+  }    
   
  /*
    *
@@ -70,4 +83,5 @@ class sfWidgetFormTimePicker extends sfWidgetFormDateJQueryUI
     }  
     return $js;
   } 
+  
 }
