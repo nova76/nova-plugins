@@ -39,7 +39,7 @@ class sfWidgetFormPlain extends sfWidgetForm
    */
   protected function configure($options = array(), $attributes = array())
   {
-    
+    $this->addOption('html', false);
     $this->addOption('model', false);
     $this->addOption('method', '__toString');
     $this->addOption('key_method', 'getPrimaryKey');
@@ -58,6 +58,7 @@ class sfWidgetFormPlain extends sfWidgetForm
     $this->addOption('empty', 'Not granted');
 
     $this->addOption('has_hidden', false);
+    $this->addOption('choices', false);
 
     //parent::configure($options, $attributes);    
   }
@@ -82,6 +83,12 @@ class sfWidgetFormPlain extends sfWidgetForm
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
     $this->cached_value = false;
+    
+    if ($this->getOption('html') !== false)
+    {
+      return $this->renderContentTag('div', $this->getOption('html'), $attributes); 
+    }
+    
     if ($this->getOption('cached_value') === true)
     {
       $this->cached_value = $value;  
@@ -89,7 +96,7 @@ class sfWidgetFormPlain extends sfWidgetForm
 
     $attributesDiv = array_merge($attributes, array('id'=>$this->generateId($name).'_div'));
     
-    if (false!==$this->getOption('model'))
+    if (false!==$this->getOption('model') || false!==$this->getOption('choices'))
     {
       $choices = $this->getChoices();
       $hiddenInput = new sfWidgetFormInputHidden();
@@ -117,7 +124,12 @@ class sfWidgetFormPlain extends sfWidgetForm
    */
   public function getChoices()
   {
-   if (null === $this->getOption('table_method'))
+    if ($this->getOption('choices'))
+    {
+      return $this->getOption('choices');
+    }
+    
+    if (null === $this->getOption('table_method'))
     {
       $query = null === $this->getOption('query') ? Doctrine_Core::getTable($this->getOption('model'))->createQuery() : $this->getOption('query');
       if ($order = $this->getOption('order_by'))
