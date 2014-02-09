@@ -16,6 +16,7 @@ class BasesfGuardChangeUserPasswordForm extends BasesfGuardUserForm
 
     $this->useFields(array('password'));
 
+    
     $this->validatorSchema['password'] = new sfValidatorRegex(array('pattern'=>'/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/'));
 
     $this->validatorSchema['password']->setMessage('invalid', 'A jelszó minimum 8 karakteres, és legalább 1 számot és egy nagy betűt tartalmaz!');

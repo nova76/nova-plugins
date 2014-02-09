@@ -34,7 +34,7 @@
       </trans-unit>
       <trans-unit>
         <source>Forgot your password?</source>
-        <target>Elfelejtett jelszó?</target>
+        <target>Sikertelen bejelentkezés?</target>
       </trans-unit>
       <trans-unit>
         <source>You don't have the required permission to access this page.</source>
@@ -48,6 +48,22 @@
         <source>The two passwords must be the same.</source>
         <target>A két jelszó meg kell egyezzen</target>
       </trans-unit>
+      <trans-unit>
+        <source>Do not worry, we can help you get back in to your account safely!</source>
+        <target>Sikertelen bejelentkezés esetén lehetősége van új jelszót igényelni.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Fill out the form below to request an e-mail with information on how to reset your password.</source>
+        <target>Kérjük, adja meg e-mail címét és kövesse a levélben kapott utasításokat!</target>
+      </trans-unit>
+      <trans-unit>
+        <source>E-mail address</source>
+        <target>E-mail cím</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Request</source>
+        <target>Ok</target>
+      </trans-unit>      
     </body>
   </file>
 </xliff>

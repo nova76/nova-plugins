@@ -23,20 +23,31 @@ class BasesfGuardRequestForgotPasswordForm extends BaseForm
     $valid = parent::isValid();
     if ($valid)
     {
-      $values = $this->getValues();
-      $this->user = Doctrine_Core::getTable('sfGuardUser')
-        ->createQuery('u')
-        ->where('u.email_address = ?', $values['email_address'])
-        ->fetchOne();
+      return $this->isValidUser();
+    } 
+    else 
+    {
+      return false;
+    }
+      
+  }
+  
+  public function isValidUser()
+  {
+    $values = $this->getValues();
+    $this->user = Doctrine_Core::getTable('sfGuardUser')
+      ->createQuery('u')
+      ->where('u.email_address = ?', $values['email_address'])
+      ->fetchOne();
 
-      if ($this->user)
-      {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
+    if ($this->user)
+    {
+      return true;
+    } 
+    else 
+    {
       return false;
     }
   }
+  
 }
