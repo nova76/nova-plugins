@@ -16,6 +16,8 @@ class sfWidgetFormTimePicker extends sfWidgetFormDateJQueryUI
     parent::configure($options, $attributes);
     $this->addOption('from', null);
     $this->addOption('to', null);
+    $this->addOption('minuteGrid', 15);
+    $this->addOption('stepMinute', 1);
   }
 
   /**
@@ -51,6 +53,8 @@ class sfWidgetFormTimePicker extends sfWidgetFormDateJQueryUI
     {
       $res['hourMax'] = $this->getOption('to');
     }
+    $res['minuteGrid'] = $this->getOption('minuteGrid');  
+    $res['stepMinute'] = $this->getOption('stepMinute');
     return $res;
   }    
   
