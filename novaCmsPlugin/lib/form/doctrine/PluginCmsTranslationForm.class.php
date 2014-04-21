@@ -16,7 +16,7 @@ abstract class PluginCmsTranslationForm extends BaseCmsTranslationForm
     $this->widgetSchema['content'] = new sfWidgetFormTextareaTinyMCE();
     // unset($this['content']);
     $this->widgetSchema['title']->setAttribute('class', 'title');
-    $this->widgetSchema['slug']->setAttribute('class', 'slug');
+    //$this->widgetSchema['slug']->setAttribute('class', 'slug');
   }  
   
 }

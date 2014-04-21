@@ -18,11 +18,7 @@
       </trans-unit>
       <trans-unit>
         <source>Password again</source>
-        <target>Jelszó méegegyszer</target>
-      </trans-unit>
-      <trans-unit>
-        <source>password_again</source>
-        <target>Jelszó méegegyszer</target>
+        <target>Jelszó mégegyszer</target>
       </trans-unit>
       <trans-unit>
         <source>Remember</source>
@@ -63,7 +59,35 @@
       <trans-unit>
         <source>Request</source>
         <target>Ok</target>
-      </trans-unit>      
+      </trans-unit>
+      <trans-unit>
+        <source>Forgot Password Request for %1%</source>
+        <target>Elfelejtett jelszó</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invalid e-mail address!</source>
+        <target>Hibás E-mail cím</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Check your e-mail! You should receive something shortly!</source>
+        <target>Kérjük, ellenőrizze postaládáját! Hamarosan kapni fog valamit!</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Required.</source>
+        <target>Kötelező mező.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>New Password for %1%</source>
+        <target>Új jelszó</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Password updated successfully!</source>
+        <target>A jelszava módosítása megtörtént</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Forgot Password Request for %1%'</source>
+        <target>Elfelejtett jelszó</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
