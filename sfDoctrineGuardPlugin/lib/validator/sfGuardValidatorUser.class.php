@@ -35,6 +35,7 @@ class sfGuardValidatorUser extends sfValidatorBase
     $method = $allowEmail ? 'retrieveByUsernameOrEmailAddress' : 'retrieveByUsername';
 
     // don't allow to sign in with an empty username
+    
     if ($username)
     {
        if ($callable = sfConfig::get('app_sf_guard_plugin_retrieve_by_username_callable'))
