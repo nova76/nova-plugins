@@ -16,10 +16,11 @@ class BasesfGuardChangeUserPasswordForm extends BasesfGuardUserForm
 
     $this->useFields(array('password'));
 
-    
-    $this->validatorSchema['password'] = new sfValidatorRegex(array('pattern'=>'/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/'));
-
-    $this->validatorSchema['password']->setMessage('invalid', 'A jelszó minimum 8 karakteres, és legalább 1 számot és egy nagy betűt tartalmaz!');
+    if (true === sfConfig::get('app_sf_guard_user_pssword_hard', true))
+    {
+      $this->validatorSchema['password'] = new sfValidatorRegex(array('pattern'=>'/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/'));      
+      $this->validatorSchema['password']->setMessage('invalid', 'A jelszó minimum 8 karakteres, és legalább 1 számot és egy nagy betűt tartalmaz!');
+    }
     
     $this->widgetSchema['password'] = new sfWidgetFormInputPassword();
     $this->validatorSchema['password']->setOption('required', true);
@@ -28,5 +29,7 @@ class BasesfGuardChangeUserPasswordForm extends BasesfGuardUserForm
     $this->validatorSchema['password_again']->setOption('required', true);
 
     $this->mergePostValidator(new sfValidatorSchemaCompare('password', sfValidatorSchemaCompare::EQUAL, 'password_again', array(), array('invalid' => 'The two passwords must be the same.')));
+    
+    $this->getWidgetSchema()->getFormFormatter()->setTranslationCatalogue('sf_guard');
   }
 }
