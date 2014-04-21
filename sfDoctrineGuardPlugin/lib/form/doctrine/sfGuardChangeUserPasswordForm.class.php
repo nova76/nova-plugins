@@ -15,5 +15,6 @@ class sfGuardChangeUserPasswordForm extends BasesfGuardChangeUserPasswordForm
    */
   public function configure()
   {
+    $this->getWidgetSchema()->getFormFormatter()->setTranslationCatalogue('sf_guard');
   }
 }
