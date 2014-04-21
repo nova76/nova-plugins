@@ -128,6 +128,19 @@ abstract class PluginsfGuardUser extends BasesfGuardUser
 
     $ug->save($con);
   }
+  
+  /**
+   * Adds the user a new group from its name.
+   *
+   * @param string $name The group name
+   * @param Doctrine_Connection $con A Doctrine_Connection object
+   * @throws sfException
+   */
+  public function hasGroupByName($name, $con = null)
+  {
+    return in_array($name, $this->getGroupNames());
+  }  
+  
 
   /**
    * Adds the user a permission from its name.
