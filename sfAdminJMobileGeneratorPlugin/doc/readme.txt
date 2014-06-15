@@ -1,93 +1,26 @@
-sfAdminThemeRoller változtatások eddig:
- 
-1., az object actionnél megadhato az ui-icon:false. Akkor nincs icon
+sfAdminThemejRoller pluginból lett elkészítve, ezért annak sok funkciója nem lett kiírtva!
 
-2., a lista sf_admin_container nevű divje kapott egy list-{modulneve} class jelölöt. Így külön lehet designolni a táblázatokat, de a meglévő nem sérül. 
-  
-3., 
-  filter:  
-        template: top
-        extra_css_class: "ui-corner-all"
-  A filter felül lesz a tábla felett és nem lesz rejtett és kap egy "ui-corner-all" classt a div, amiben van a filter
- 
-4., accordionos csoportosítás
-  pl:
-      form:    
-          template: { name: accordion, open: [1]}
-          display:
-            "Céges adatok":            [..]
-            "Kapcsolattartói adatok":  [..]
-            "Pénzügyi információk":    [..]
-  
-  open: ez egy tömb, megadható több index, ami nyitva van. 0-tól indul az index.
-  Hiba esetén nyitva marad. 
-  Illetve ha partial van, akkor letre kell hozni egy "partial_neve_error" partialt is, 
-  ami vissza kell adjon egy 0 vagy 1 értéket, attól függően lesz nyitva. Ez elég gáz de jobb ötltem nem volt.
+telepítése: 
+enable plugins: sfAdminJMobileGeneratorPlugin
+./symfony plugin:publish-assets
 
-5., A rekord akció gombjai feltételtől függően jelenhetnek meg.
-  http://snippets.symfony-project.org/snippet/467
+./symfony doctrine:build-forms --generator-class="sfDoctrineFormGeneratorMobile"
+./symfony  doctrine:generate-admin --module=MobileProduct frontend Product  --theme='jmobile'
+./symfony  doctrine:generate-admin --module=MobileProduct frontend Product
 
-  például van egy objektum, aminek van egy client boolean tulajdonsága:
-  Ha az 0, akkor lesz gomb, ha 1, akkor nem lesz gomb.
-      list:   
-        object_actions:  
-          client:     
-            action:         client
-            condition:
-              function:     getClient 
-              # params:       "$model->getDbField(), $sf_user, 'test'"
-              invert:       true     
-  
-5.,  _show_footer.php 
-  kellhet, ha valamit a show alá szeretnénk tenni, akár egy javascriptet.
+vagy:
+./symfony generate:all-admin --application="mobile"
+./symfony plugin:publish-assets
 
-6., rendezés többféle rendezési mód:
 
-  A legegyszerűbb:
-    fieldname:   { is_sortable: true, function: rendezesfuggveny}
-    Ekkor létre kell hozni egy rendezesfuggveny nevu függvenyt az actionben, 
-    ami paramaéterben megkapja a queryt. Amivel már azt csinálunk amit akarunk :-)
-    !!!Ez még nincs tesztelve!!!
-    
-  A kcisit összetetttebb:  
-    fieldname:   { is_sortable: true, peer: KapcsolodoObjektumNeve, sort: KapcoslodoObjektumMezoje alias: KapcsolodoObjektumAliasa}
-    1., ha van peer, akkor kapcsolni kell a tablat 
-      a, ha van alias, akkor azzal az aliassal 
-      b, vagy a peer lesz az alias is 
-    2., ha nincs vagy false a peer, de van alias akkor nem kell kapcsolni a tablat, mar van kapcsolt tabla, amiről gondoskodni kell
-    3., ha nincs vagy false a peer, és nincs vagy false alias is, akkor csak egy szarmaztatott mezo a root tablaban. 
-        Ha a származtatott mezo egy subselect, akkor az alias false értéket kell kapjon
-7., 
-generator:
-  class: jRollerDoctrineGenerator
+paraméterek:
+nagyjából megegyezik a sfAdminThemejRoller pluginnal
+list.route : megadható a listához a route is, ha nem a szerkesztés a nekünk megfelelő
 
-  beállitás esetén a  jRollerDoctrineGenerator osztalyt használja 
-  az sfDoctrineGeenrator(dfModelGenerator) osztály helyett
-  
-8.
-sf_admin.title néven létrehozott slot felülírja a címet, akár a formoknál, akár a listánál
-
-9., 
-sf_admin.extend_url végigvezetve a templatek linkjein
-// pl: 
-slot('sf_admin.extend_url')
-echo 'company='.sfContext::getInstance()->getRequest()->getParameter('company') 
-end_slot();
-// így belekerül a linkekbe a company paraméter is.
-vagy actionben:
-$this->getResponse()->setSlot('admin.extend_url', 'company='.$this->context->getRequest()->getParameter('company'));
-
-10., Nyissuk meg automatikusan a szürőt:
-    _list_footer.php - ba tegyük be egy jQuery blokba:  
-    jQuery('#sf_admin_filter_button').trigger('click')
-
-11, hogyan oldjuk meg a hogy a lista menuje szet legyen szedve:
-    _list_footer.php - ba tegyük be egy jQuery blokba:
-    jQuery('.sf_admin_actions_block').html($('#sf_admin_actions_menu_list').html()).addClass('sf_admin_td_actions fg-buttonset fg-buttonset-single').attr('style', 'width: 100%');
-    /* a menüpontok jobbra */
-    jQuery('.sf_admin_actions_block li').attr('style', 'float:right; margin-left:5px');
-    /* az első menüpont (_new) balra */
-    jQuery('.sf_admin_actions_block li:first').attr('style', 'float:left');
-    /* ha szinezni akarnánk */
-    jQuery('.sf_admin_action_new a').css("background", "yellow");
-      
+extra menüpont:
+edit:
+  actions: 
+    _print:
+      show: [top, bottom, header] #header a felső fekete szakasz, a top felül, a bottom alul
+      action: print 
+      label: 'Nyomtatás'
