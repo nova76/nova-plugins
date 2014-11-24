@@ -13,9 +13,26 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
-      list:    ~
+      fields:  
+        id:                         { label: 'Azonosító' }
+        name:                       { label: 'Név' }
+        zipcode:                    { label: 'Irányítószám' }
+        city:                       { label: 'Település' }
+        address:                    { label: 'Cim' }
+        door:                       { label: 'Ajtó' }
+        email:                      { label: 'E-mail' }
+        phone_country:              { label: 'Telefon - ország' }
+        phone_prefix:               { label: 'Telefon - szolgáltató' }
+        phone:                      { label: 'Telefonszám' }
+        notes:                      { label: 'Megjegyzés' }      
+      list:    
+        title: Feliratkozottak
+        batch_actions: {}
+        max_per_page:   200
+        display: [id, name,  email, _address, _phone, notes]  
       filter:  ~
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:    
+        title: Szerkesztés
+      new:     
+        title: Új

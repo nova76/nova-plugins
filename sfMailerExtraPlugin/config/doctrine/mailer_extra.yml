@@ -87,6 +87,32 @@ MailRecipient:
       notnull: true
     email:  
       type: text
+      notnull: true
+    zipcode:
+      type: string(10)
+      notnull: true
+    city:
+      type: string(128)
+      notnull: false
+    address:
+      type: string(128)
+      notnull: true
+    door:
+      type: string(128)
+      notnull: false
+    phone_country:
+      type: string(3)
+      notnull: true
+      default: '+36'
+    phone_prefix:
+      type: string(3)
+      notnull: true
+    phone:
+      type: string(16)
+      notnull: true
+    notes:
+      type: text
+      notnull: false      
   relations:     
     Channels:
       class: MailChannel

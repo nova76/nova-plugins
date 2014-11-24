@@ -1,0 +1,1 @@
+<?php echo $mail_recipient->phone_country ?> <?php echo $mail_recipient->phone_prefix ?> <?php echo $mail_recipient->phone ?>

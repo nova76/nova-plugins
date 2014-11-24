@@ -1,0 +1,1 @@
+<?php echo $mail_recipient->zipcode ?> <?php echo $mail_recipient->city ?>, <?php echo $mail_recipient->address ?> <?php echo $mail_recipient->door ?>
