@@ -1,0 +1,41 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           sfLog
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          sf_log
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        object_id: {label: 'Azonosító'}
+        object: {label: 'Tábla'}
+      list:    
+        display: [id, action, operation, object, object_id, last_modified_fields_name, Creator, created_at]
+        actions: {}
+        batch_actions: {}
+        object_actions:
+          _show: ~      
+      filter:  
+        display: [id, action, operation, object, object_id, last_modified_fields_name, created_at]
+      form:    ~
+      edit:    ~
+      new:     ~
+      show:
+        actions: 
+          _list: ~
+        display: 
+          Alapadatok: [id, action, object, object_id, operation, last_modified_fields_name, _old_modified_fields_value, _last_modified_fields_value, created_by, updated_by, created_at, updated_at] 
+          Server:  [_server]
+          Get:     [_get]
+          Post:    [_post]
+          Request: [_request]
+
+
+

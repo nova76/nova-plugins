@@ -1,0 +1,43 @@
+sfLog:
+  actAs:
+    sfCreatorSaveBehavior: ~  
+    Timestampable: 
+      created:
+        name: created_at
+        type: timestamp
+        options: {notnull: false}  
+      updated:
+        name: updated_at
+        type: timestamp
+        options: {notnull: false}
+  columns:  
+    action:
+      type: string(255) 
+    post:
+      type: text
+    post_zip:
+      type: blob
+    get:
+      type: text
+    get_zip:
+      type: blob
+    request:
+      type: text
+    request_zip:
+      type: blob
+    server:
+      type: text
+    server_zip:
+      type: blob
+    object:
+      type: string(255) 
+    object_id:
+      type: int(11) 
+    operation:
+      type: string
+    last_modified_fields_value:
+      type: text
+    old_modified_fields_value:
+      type: text
+    last_modified_fields_name:
+      type: text

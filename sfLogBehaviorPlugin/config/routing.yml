@@ -1,0 +1,8 @@
+sf_log:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                sfLog
+    module:               sfLogAdmin
+    prefix_path:          /sfLogAdmin
+    column:               id
+    with_wildcard_routes: true
