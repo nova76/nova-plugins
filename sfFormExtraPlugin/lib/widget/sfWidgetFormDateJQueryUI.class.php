@@ -62,10 +62,14 @@ class sfWidgetFormDateJQueryUI extends sfWidgetForm
     {
       $input = new sfWidgetFormInput(array(), $attributes);
       $html = $input->render($name, $value);
-      if (false !== $this->getOption('image'))
+      if ($this->getOption('image'))
       {
-        $image = sprintf('params.buttonImage = "%s"; params.buttonImageOnly = true; params.showOn = "button";', $this->getOption('image'));
+      	$image = sprintf('params.buttonImage = "%s"; params.buttonImageOnly = true; params.showOn = "both";', $this->getOption('image'));
       }
+      else 
+      {
+      	$image = 'params.showOn = "focus";';
+      }	
     }
     else 
     {

@@ -18,6 +18,7 @@ class sfWidgetFormTimePicker extends sfWidgetFormDateJQueryUI
     $this->addOption('to', null);
     $this->addOption('minuteGrid', 15);
     $this->addOption('stepMinute', 1);
+    $this->addOption('image', false);
   }
 
   /**
