@@ -29,9 +29,13 @@ class BasesfGuardUserAdminForm extends BasesfGuardUserForm
     $this->widgetSchema['permissions_list']->setLabel('Permissions');
 
     $this->widgetSchema['password'] = new sfWidgetFormInputPassword();
-    $this->validatorSchema['password'] = new sfValidatorRegex(array('pattern'=>'/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/'));
-    $this->validatorSchema['password']->setMessage('invalid', 'A jelszó minimum 8 karakteres, és legalább 1 számot és egy nagy betűt tartalmaz!');
-
+    
+    if (sfConfig::get('app_sf_guard_plugin_hard_pasword', true)==true)
+    { 	
+    	$this->validatorSchema['password'] = new sfValidatorRegex(array('pattern'=>'/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/'));
+    	$this->validatorSchema['password']->setMessage('invalid', 'A jelszó minimum 8 karakteres, és legalább 1 számot és egy nagy betűt tartalmaz!');
+    }
+    
     $this->validatorSchema['password']->setOption('required', false);
     $this->widgetSchema['password_again'] = new sfWidgetFormInputPassword();
     $this->validatorSchema['password_again'] = clone $this->validatorSchema['password'];
