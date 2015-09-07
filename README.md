@@ -28,4 +28,5 @@ sfCKEditorPlugin
 sfAdminThemejRollerPlugin
     Original version copied, and some feature added
 sfFirePHPPlugin
-	Oroginal version copied	
+	Oroginal version copied
+	
